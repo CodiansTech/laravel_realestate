@@ -1,5 +1,7 @@
 @extends('admin.layouts.main')
 
+@section('admintitle', 'Home')
+
 @section('content')
 
 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">

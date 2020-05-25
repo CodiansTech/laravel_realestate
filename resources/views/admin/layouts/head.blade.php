@@ -11,7 +11,7 @@
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{URL::asset('assets/css/responsive.css')}}">
 <!-- Title -->
-<title>FindHouse - Real Estate HTML Template</title>
+<title>@yield('admintitle') - {{config('app.name')}}</title>
 <!-- Favicon -->
 <link href="images/favicon.ico" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
 <link href="images/favicon.ico" sizes="128x128" rel="shortcut icon" />
