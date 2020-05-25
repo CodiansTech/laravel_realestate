@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::get('/house', function () {
+    return view('pages.single_view');
+});
 
 Route::get('/admin', function () {
     return view('admin.pages.index');
