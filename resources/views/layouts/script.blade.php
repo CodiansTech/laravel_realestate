@@ -1,5 +1,5 @@
 <!-- Wrapper End -->
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="{{ URL::asset('assets/js/email-decode.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/js/jquery-3.3.1.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/js/jquery-migrate-3.0.0.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/js/popper.min.js') }}"></script>

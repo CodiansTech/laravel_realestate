@@ -148,7 +148,7 @@
 		<div class="mobile-menu">
 			<div class="header stylehome1">
 				<div class="main_logo_home2 text-center">
-		            <img class="nav_logo_img img-fluid mt20" src="images/header-logo2.png" alt="header-logo2.png">
+		            <img class="nav_logo_img img-fluid mt20" src="{{URL::asset('assets/images/header-logo2.png')}}" alt="header-logo2.png">
 		            <span class="mt20">FindHouse</span>
 				</div>
 				<ul class="menu_bar_home2">
