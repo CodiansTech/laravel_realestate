@@ -4,8 +4,8 @@
 
 			@hasrole('agent|admin')
 				<li class="title"><span>Main</span></li>
-				<li class="treeview"><a href="page-dashboard.html"><i class="flaticon-layers"></i><span> Dashboard</span></a></li>
-				<li class="treeview"><a href="page-message.html"><i class="flaticon-envelope"></i><span> Message</span></a></li>
+				<li class="treeview"><a href="{{url('/')}}" target="_blank"><i class="flaticon-layers"></i><span> Home</span></a></li>
+				<li class="treeview"><a href="{{route('admin')}}"><i class="flaticon-building"></i><span> Dashboard</span></a></li>
 			@endhasrole
 	   		<li class="title"><span>Manage Listings</span></li>
 			@can('manage-properties')
@@ -28,6 +28,10 @@
 	   		<li class="title"><span>Manage Account</span></li>
 		    <li><a href="page-my-packages.html"><i class="flaticon-box"></i> <span>My Package</span></a></li>
 		    <li><a href="page-my-profile.html"><i class="flaticon-user"></i> <span>My Profile</span></a></li>
-		    <li><a href="page-login.html"><i class="flaticon-logout"></i> <span>Logout</span></a></li>
+		    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="flaticon-logout"></i> <span>Logout</span></a></li>
 	    </ul>
     </div>
+
+	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+	  @csrf
+    </form>
