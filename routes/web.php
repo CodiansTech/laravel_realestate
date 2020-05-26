@@ -31,3 +31,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('admin/users', 'UserController@index')->name('admin.users.index');
+Route::get('admin/users/{id}/edit', 'UserController@edit')->name('admin.users.edit');
+Route::POST('admin/users/{id}/edit', 'UserController@update')->name('admin.users.update');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Session;
 class UserController extends Controller
 {
     /**
@@ -57,7 +58,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrfail($id);
+        return view('admin.pages.users.edit')->withUser($user);
     }
 
     /**
@@ -69,7 +71,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+            'email' => 'required|email|unique:users,email,'.$id,
+        ]);
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if(isset($request->password)){
+            $user->password = bcrypt($request->password);
+        }
+        $user->update();
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
