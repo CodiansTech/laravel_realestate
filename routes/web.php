@@ -37,6 +37,10 @@ Route::get('/contact', function () {
     return view('pages.contact');
 });
 
+Route::get('/404', function () {
+    return view('pages.error.404');
+});
+
 Route::get('/admin', function () {
     return view('admin.pages.properties.index');
 });
