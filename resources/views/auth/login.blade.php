@@ -34,13 +34,23 @@
 							</div>
 							 <div class="form-group">
 						    	<input type="email" id="exampleInputEmail3" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
+								@error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                    	<strong>{{ $message }}</strong>
+                                	</span>
+                                @enderror
 							</div>
 							<div class="form-group">
 						    	<input id="exampleInputPassword4" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+								@error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                    	<strong>{{ $message }}</strong>
+                                	</span>
+                                @enderror
 							</div>
 							<div class="form-group custom-control custom-checkbox">
                                 <input class="custom-control-input" type="checkbox" name="remember" id="exampleCheck3" {{ old('remember') ? 'checked' : '' }}>
-
+								
 								<label class="custom-control-label" for="exampleCheck3">Remember me</label>
                                 @if (Route::has('password.request'))
                                     <a class="tdu btn-fpswd float-right" href="{{ route('password.request') }}">
