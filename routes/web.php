@@ -44,3 +44,10 @@ Route::get('/admin', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('admin/users', 'UserController@index')->name('admin.users.index');
+Route::get('admin/users/{id}/edit', 'UserController@edit')->name('admin.users.edit');
+Route::post('admin/users/{id}/edit', 'UserController@update')->name('admin.users.update');
+
+Route::get('admin/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
