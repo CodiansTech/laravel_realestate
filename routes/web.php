@@ -18,7 +18,23 @@ Route::get('/', function () {
 });
 
 Route::get('/house', function () {
-    return view('pages.single_view');
+    return view('pages.properties.index');
+});
+
+Route::get('/list', function () {
+    return view('pages.listings.listing_map');
+});
+
+Route::get('/list-grid', function () {
+    return view('pages.listings.listing_grid');
+});
+
+Route::get('/about', function () {
+    return view('pages.about');
+});
+
+Route::get('/contact', function () {
+    return view('pages.contact');
 });
 
 Route::get('/admin', function () {
