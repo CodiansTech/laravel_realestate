@@ -42,4 +42,10 @@ class User extends Authenticatable
     public function getName(){
         return $this->name;
     }
+    
+    public function isAdmin(){
+        if($this->hasRole('admin'))
+            return true;
+        return false;
+    }
 }
