@@ -11,7 +11,7 @@
 
 <!-- Header Container
 ================================================== -->
-@include('layouts.header')
+@include('layouts.headerhome')
 
 
 @yield('content')

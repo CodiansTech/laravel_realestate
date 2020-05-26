@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="inner_page_breadcrumb">
+    <section class="inner_page_breadcrumb">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-6">
@@ -16,8 +16,8 @@
 			</div>
 		</div>
 	</section>
-    
-<section class="our-log-reg bgc-fa">
+
+    <section class="our-log-reg bgc-fa">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-lg-6 offset-lg-3">

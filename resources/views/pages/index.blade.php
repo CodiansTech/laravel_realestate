@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainhome')
 
 @section('title', 'Homepage')
 
@@ -1595,7 +1595,6 @@
 		</div>
 	</section>
 
-    @include('layouts.footer')
 
 @endsection
 
