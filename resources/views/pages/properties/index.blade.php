@@ -627,19 +627,9 @@
 									</ul>
 								</div>
 								<h4 class="mb30">Description</h4>
-						    	<p class="mb25">Evans Tower very high demand corner junior one bedroom plus a large balcony boasting full open NYC views. You need to see the views to believe them. Mint condition with new hardwood floors. Lots of closets plus washer and dryer.</p>
-						    	<p class="gpara second_para white_goverlay mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
-								<div class="collapse" id="collapseExample">
-								  	<div class="card card-body">
-								    	<p class="mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
-								    	<p class="mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
-								  	</div>
-								</div>
-								<p class="overlay_close">
-									<a class="text-thm fz14" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-								   	 Show More <span class="flaticon-download-1 fz12"></span>
-								  	</a>
-								</p>
+						    	<p class="mb25">Evans Tower very high demand corner junior one bedroom plus a large balcony boasting full open NYC views. You need to see the views to believe them. Mint condition with new hardwood floors. Lots of closets plus washer and dryer.
+						    	Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
+								
 							</div>
 						</div>
 						<div class="col-lg-12">
@@ -796,9 +786,9 @@
 								<div class="faq_according style2">
 									<div class="accordion" id="accordionExample">
 									  	<div class="card floor_plan">
-										    <div class="card-header" id="headingOne">
+										    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 										    	<h2 class="mb-0">
-										        	<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										        	<button class="btn btn-link">
 										        		<ul class="mb0">
 										        			<li class="list-inline-item">First Floor</li>
 										        			<li class="list-inline-item"><p>Size:</p> <span>1267 Sqft</span></li>
@@ -817,9 +807,9 @@
 										    </div>
 									    </div>
 									    <div class="card floor_plan">
-									    	<div class="card-header active" id="headingTwo">
+									    	<div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 									    		<h2 class="mb-0">
-									        		<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									        		<button class="btn btn-link collapsed" type="button">
 										        		<ul class="mb0">
 										        			<li class="list-inline-item">First Floor</li>
 										        			<li class="list-inline-item"><p>Size:</p> <span>1267 Sqft</span></li>
@@ -830,7 +820,7 @@
 										        	</button>
 									    		</h2>
 									    	</div>
-									    	<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+									    	<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 									      		<div class="card-body text-center">
 											    	<img class="img-fluid" src="{{ URL::asset('assets/images/resource/floor_plan.png') }}" alt="floor_plan.png">
 									        		<p>Plan description. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
@@ -997,77 +987,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-12">
-							<div class="application_statics">
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="chart_circle_doughnut mt30">
-											<h4>Payment Calculator</h4>
-											<canvas class="mt50 mb50" id="myChart"></canvas>
-										</div>
-									</div>
-									<div class="col-lg-6 col-xl-6">
-										<div class="my_profile_setting_input ui_kit_select_search form-group">
-											<select class="selectpicker" data-live-search="true" data-width="100%">
-												<option data-tokens="Terms">Terms</option>
-												<option data-tokens="Terms2">Terms2</option>
-												<option data-tokens="Terms3">Terms3</option>
-												<option data-tokens="Terms4">Terms4</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-lg-6 col-xl-6">
-										<div class="my_profile_setting_input form-group">
-									    	<input type="text" class="form-control" id="formGroupExampleWebsite" placeholder="Interest">
-										</div>
-									</div>
-									<div class="col-lg-6 col-xl-6">
-										<div class="my_profile_setting_input form-group">
-									    	<input type="text" class="form-control" id="formGroupExampleFaceBook" placeholder="Home Price">
-										</div>
-									</div>
-									<div class="col-lg-6 col-xl-4">
-										<div class="my_profile_setting_input form-group">
-									    	<input type="text" class="form-control" id="formGroupExampleTwitter" placeholder="Down Payment">
-										</div>
-									</div>
-									<div class="col-lg-6 col-xl-2">
-										<div class="my_profile_setting_input form-group">
-									    	<input type="text" class="form-control" id="formGroupExampleLinkedin" placeholder="10%">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="application_statics shop_single_tab_content style3 mt30">
-								<ul class="nav nav-tabs float-right fn-414" id="myTab" role="tablist">
-									<li class="nav-item">
-									    <a class="nav-link active" id="hourly-tab" data-toggle="tab" href="#hourly" role="tab" aria-controls="hourly" aria-selected="true">Hours</a>
-									</li>
-									<li class="nav-item">
-									    <a class="nav-link" id="weekly-tab" data-toggle="tab" href="#weekly" role="tab" aria-controls="weekly" aria-selected="false">Weekly</a>
-									</li>
-									<li class="nav-item">
-									    <a class="nav-link" id="monthly-tab" data-toggle="tab" href="#monthly" role="tab" aria-controls="monthly" aria-selected="false">Monthly</a>
-									</li>
-								</ul>
-								<div class="tab-content" id="myTabContent2">
-									<div class="tab-pane fade show active" id="hourly" role="tabpanel" aria-labelledby="hourly-tab">
-										<h4 class="mt10-414">Property Views</h4>
-										<canvas id="myChartweave" width="100%" height="50"></canvas>
-									</div>
-									<div class="tab-pane fade" id="weekly" role="tabpanel" aria-labelledby="weekly-tab">
-										<h4 class="mt10-414">Property Views</h4>
-										<div class="c_container w100"></div>
-									</div>
-									<div class="tab-pane fade" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
-										<h4 class="mt10-414">Property Views</h4>
-										<canvas class="ls_barchart" id="chart"></canvas>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 						<div class="col-lg-12">
 							<div class="product_single_content">
 								<div class="mbp_pagination_comments mt30">
