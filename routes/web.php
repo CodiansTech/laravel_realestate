@@ -24,3 +24,7 @@ Route::get('/house', function () {
 Route::get('/admin', function () {
     return view('admin.pages.properties.index');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
