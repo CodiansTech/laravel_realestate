@@ -37,6 +37,7 @@
                             <form method="POST" action="{{ route('admin.users.update', $user->id) }}">
                             @csrf
 								<div class="form-group">
+									<label>Name:</label>
 							    	<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" value="{{ $user->getName()  }}" required autocomplete="name" autofocus>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -45,6 +46,7 @@
                                     @enderror
 								</div>
 								 <div class="form-group">
+									<label>Email:</label>
 							    	<input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" id="exampleInputEmail3" value="{{ $user->email }}" required autocomplete="email" placeholder="Email Address">
                                     
                                     @error('email')
@@ -54,6 +56,7 @@
                                     @enderror
 								</div>
 								<div class="form-group">
+									<label>Password:</label>
 							    	<input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword4" placeholder="Password" name="password" >
                                  
                                     @error('password')
@@ -62,6 +65,23 @@
                                         </span>
                                     @enderror
                                     </div>
+
+									<div class='form-group'>
+										<label>Role:</label>
+										<br>
+										@foreach ($roles as $role)
+											<input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->contains($role)) checked @endif>
+												
+												<div class="btn-group">
+													<div class="btn-group">
+														<button type="button" class="btn btn-default btn-xs">
+															{{ ucfirst($role->name) }} </button>
+														
+													</div>
+												</div>
+
+										@endforeach
+									</div>
 								<button type="submit" class="btn btn-log btn-block btn-thm2">Update</button>
 							</form>
 						</div>

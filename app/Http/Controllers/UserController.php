@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+
 class UserController extends Controller
 {
     /**
@@ -59,7 +63,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrfail($id);
-        return view('admin.pages.users.edit')->withUser($user);
+        $roles = Role::all();
+        // dd($roles);
+        return view('admin.pages.users.edit')->with('roles', $roles)->withUser($user);
     }
 
     /**
@@ -82,6 +88,13 @@ class UserController extends Controller
             $user->password = bcrypt($request->password);
         }
         $user->update();
+        $roles = $request->roles;
+        if (isset($roles)) {        
+            $user->roles()->sync($roles);  //If one or more role is selected associate user to roles          
+        }        
+        else {
+            $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
+        }
 
         return redirect()->route('admin.users.index');
     }
