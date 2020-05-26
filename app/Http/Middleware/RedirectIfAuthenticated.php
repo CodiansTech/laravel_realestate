@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
+    
+    public const HOME = '/admin';
     /**
      * Handle an incoming request.
      *
