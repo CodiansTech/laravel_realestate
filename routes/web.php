@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.index');
-});
+})->name('index');
 
 Route::get('house', function () {
     return view('pages.properties.index');
@@ -55,4 +55,5 @@ Route::group(['middleware' => ['permission:manage-users']], function () {
 
 Route::group(['middleware' => ['permission:manage-properties']], function () {
     Route::get('admin/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
+    Route::get('admin/properties/create', 'PropertyController@create')->name('admin.properties.create');
 });

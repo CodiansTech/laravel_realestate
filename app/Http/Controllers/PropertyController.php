@@ -12,4 +12,8 @@ class PropertyController extends Controller
         $properties = Property::paginate(10);
         return view('admin.pages.properties.index')->withProperties($properties);
     }
+
+    public function create(){
+        return view('admin.pages.properties.create');
+    }
 }
