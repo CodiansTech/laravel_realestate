@@ -55,4 +55,5 @@ Route::group(['middleware' => ['permission:manage-users']], function () {
 
 Route::group(['middleware' => ['permission:manage-properties']], function () {
     Route::get('admin/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
+    Route::get('admin/properties/create', 'PropertyController@create')->name('admin.properties.create');
 });
