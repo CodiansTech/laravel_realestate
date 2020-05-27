@@ -9405,6 +9405,10 @@ a.btn.btn_error{
   background-color: #ff8480;
   color: #ffffff;
 }
+.alert.alart_style_five{
+  background-color: #d9534f;
+  color: #ffffff;
+}
 .ui_kit_button .btn {
   border-radius: 4px;
   height: 55px;
