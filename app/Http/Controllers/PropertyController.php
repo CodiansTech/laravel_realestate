@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Property;
-
+use App\Image;
 
 class PropertyController extends Controller
 {
@@ -40,8 +40,25 @@ class PropertyController extends Controller
         $property->city = $request->city;
         $property->neighborhood = $request->neighborhood;
         $property->zip = $request->zip;
+        $property->long = $request->longitude;
+        $property->lat = $request->latitude;
         $property->save();
+        
+        if($request->hasfile('filename'))
+        {
+            foreach($request->file('filename') as $img)
+            {
+                $date = Date('d-m-Y');
+                $name = $date.'-'.$img->getClientOriginalName();
 
+                $image = new Image();
+                $image->filename= $name;
+                $image->property_id = $property->id;
+                $image->save();
+
+                $img->move(public_path().'/images/property/', $name);  
+            }
+        }
         return redirect()->route('admin.properties.index');
     }
 }
