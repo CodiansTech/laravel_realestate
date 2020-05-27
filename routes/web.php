@@ -57,4 +57,6 @@ Route::group(['middleware' => ['permission:manage-properties']], function () {
     Route::get('admin/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
     Route::get('admin/properties/create', 'PropertyController@create')->name('admin.properties.create');
     Route::post('admin/properties/store', 'PropertyController@store')->name('admin.properties.store');
+    Route::get('admin/properties/{id}/edit', 'PropertyController@edit')->name('admin.properties.edit');
+    Route::post('admin/properties/{id}/update', 'PropertyController@update')->name('admin.properties.update');
 });
