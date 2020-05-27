@@ -9,6 +9,7 @@ use App\Image;
 class PropertyController extends Controller
 {
     public function adminIndex(){
+        $user = factory(Property::class)->make();
         $properties = Property::paginate(10);
         return view('admin.pages.properties.index')->withProperties($properties);
     }
