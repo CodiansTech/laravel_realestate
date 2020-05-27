@@ -22,6 +22,8 @@ class CreatePropertiesTable extends Migration
             $table->integer('rooms');
             $table->string('address');
             $table->string('city');
+            $table->double('lat', 10, 8);
+            $table->double('long', 11, 8);
             $table->string('neighborhood');
             $table->string('zip');
             $table->timestamps();
