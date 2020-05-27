@@ -13,16 +13,18 @@
 							<div class="my_dashboard_review">
 								<div class="row">
 									<div class="col-lg-12">
+                            		<form method="POST" action="{{ route('admin.properties.store') }}">
+									@csrf
 										<h4 class="mb30">Create Listing</h4>
 										<div class="my_profile_setting_input form-group">
 									    	<label for="propertyTitle">Property Title</label>
-									    	<input type="text" class="form-control" id="propertyTitle">
+									    	<input type="text" class="form-control" id="propertyTitle" name="title">
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<div class="my_profile_setting_textarea">
 										    <label for="propertyDescription">Description</label>
-										    <textarea class="form-control" id="propertyDescription" rows="7"></textarea>
+										    <textarea class="form-control" id="propertyDescription" rows="7" name="description"></textarea>
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-6">
@@ -52,32 +54,28 @@
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="formGroupExamplePrice">Price</label>
-									    	<input type="text" class="form-control" id="formGroupExamplePrice">
+									    	<input type="text" class="form-control" id="formGroupExamplePrice" name="price">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="formGroupExampleArea">Area</label>
-									    	<input type="text" class="form-control" id="formGroupExampleArea">
+									    	<input type="text" class="form-control" id="formGroupExampleArea" name="area">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input ui_kit_select_search form-group">
 									    	<label>Rooms</label>
-											<select class="selectpicker" data-live-search="true" data-width="100%">
-												<option data-tokens="Status1">1</option>
-												<option data-tokens="Status2">2</option>
-												<option data-tokens="Status3">3</option>
-												<option data-tokens="Status4">4</option>
-												<option data-tokens="Status5">5</option>
-												<option data-tokens="Status6">Other</option>
+											<select class="form-control" name="rooms">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
 											</select>
-										</div>
-									</div>
-									<div class="col-xl-12">
-										<div class="my_profile_setting_input">
-											<button class="btn btn1 float-left">Back</button>
-											<button class="btn btn2 float-right">Next</button>
 										</div>
 									</div>
 								</div>
@@ -88,7 +86,7 @@
 										<h4 class="mb30">Location</h4>
 										<div class="my_profile_setting_input form-group">
 									    	<label for="propertyAddress">Address</label>
-									    	<input type="text" class="form-control" id="propertyAddress">
+									    	<input type="text" class="form-control" id="propertyAddress" name="address">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-6">
@@ -100,19 +98,19 @@
 									<div class="col-lg-6 col-xl-6">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="propertyCity">City</label>
-									    	<input type="text" class="form-control" id="propertyCity">
+									    	<input type="text" class="form-control" id="propertyCity" name="city">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="neighborHood">Neighborhood</label>
-									    	<input type="text" class="form-control" id="neighborHood">
+									    	<input type="text" class="form-control" id="neighborHood" name="neighborhood">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="zipCode">Zip</label>
-									    	<input type="text" class="form-control" id="zipCode">
+									    	<input type="text" class="form-control" id="zipCode" name="zip">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
@@ -156,12 +154,6 @@
 												<option data-tokens="Greece">Street View v5</option>
 												<option data-tokens="Portugal">Street View v6</option>
 											</select>
-										</div>
-									</div>
-									<div class="col-xl-12">
-										<div class="my_profile_setting_input">
-											<button class="btn btn1 float-left">Back</button>
-											<button class="btn btn2 float-right">Next</button>
 										</div>
 									</div>
 								</div>
@@ -348,12 +340,7 @@
 						                	</li>
 						                </ul>
 							        </div>
-									<div class="col-xl-12">
-										<div class="my_profile_setting_input">
-											<button class="btn btn1 float-left">Back</button>
-											<button class="btn btn2 float-right">Next</button>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							<div class="my_dashboard_review mt30">
@@ -393,21 +380,16 @@
 									<div class="col-xl-6">
 										<div class="resume_uploader mb30">
 											<h4>Attachments</h4>
-											<form class="form-inline">
+											<div class="form-inline">
 												<input class="upload-path">
 												<label class="upload">
 												    <input type="file">
 												    Select Attachment
 												</label>
-											</form>
+											</div>
 										</div>
 									</div>
-									<div class="col-xl-12">
-										<div class="my_profile_setting_input">
-											<button class="btn btn1 float-left">Back</button>
-											<button class="btn btn2 float-right">Next</button>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							<div class="my_dashboard_review mt30">
@@ -475,9 +457,10 @@
 									<div class="col-xl-12">
 										<div class="my_profile_setting_input">
 											<button class="btn btn1 float-left">Back</button>
-											<button class="btn btn2 float-right">Next</button>
+											<button type="submit" class="btn btn2 float-right">Create</button>
 										</div>
 									</div>
+									</form>
 								</div>
 							</div>
 						</div>

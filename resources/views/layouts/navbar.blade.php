@@ -18,4 +18,4 @@
 					@if(Auth::guest())
 	                <li class="list-inline-item list_s"><a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg">Login/Register</span></a></li>
 	                @endif
-					<li class="list-inline-item add_listing"><a href="page-add-new-property.html"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
+					<li class="list-inline-item add_listing"><a href="{{route('admin.properties.create')}}"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
