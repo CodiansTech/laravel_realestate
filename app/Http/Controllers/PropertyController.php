@@ -31,7 +31,6 @@ class PropertyController extends Controller
             'neighborhood' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
         ]);
-
         $property = new Property();
         $property->title = $request->title;
         $property->description = $request->description;
@@ -82,6 +81,7 @@ class PropertyController extends Controller
             'zip' => 'required|min:3|max:255',
         ]);
 
+        // dd($request->latitude. ' - '. $request->longitude);
         $property = Property::findOrFail($id);
         $property->title = $request->title;
         $property->description = $request->description;
@@ -95,7 +95,8 @@ class PropertyController extends Controller
         $property->long = $request->longitude;
         $property->lat = $request->latitude;
         $property->update();
-        
+
+        Session::flash('success', 'Property udpated');
         if($request->hasfile('filename'))
         {
             foreach($request->file('filename') as $img)
@@ -111,7 +112,7 @@ class PropertyController extends Controller
                 $img->move(public_path().'/images/property/', $name);  
             }
         }
-        return redirect()->route('admin.properties.index');
+        return redirect()->back();
     }
 
 }

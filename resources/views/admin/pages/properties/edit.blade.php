@@ -14,8 +14,9 @@
 		var map = event.detail.map;
 		var marker = event.detail.marker;
 		var service = event.detail.service;
-		
-		var marker2 = L.marker([51.5287718,-0.2416804]).addTo(map);
+        var lat = document.getElementById("latitude").value;
+        var long = document.getElementById("longitude").value;
+		var marker2 = L.marker([lat,long]).addTo(map);
 		// 	draggable: true
 		var marker1;
 		map.on('click', function(e) {
@@ -196,7 +197,7 @@
 							<div class="col-xl-12">
 								<div class="my_profile_setting_input">
 									<button class="btn btn1 float-left">Back</button>
-									<button type="submit" class="btn btn2 float-right">Create</button>
+									<button type="submit" class="btn btn2 float-right">Update</button>
 								</div>
 							</div>
 							</form>
