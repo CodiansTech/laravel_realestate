@@ -43,7 +43,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['permission:view-admin']], function () {
     Route::get('admin', function () {
-        return view('admin.pages.properties.index');
+        return view('admin.pages.index');
     })->name('admin');
 });
 
