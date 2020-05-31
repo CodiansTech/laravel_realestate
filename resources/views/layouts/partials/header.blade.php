@@ -7,9 +7,19 @@
                 </div>
                 <div class="user-area">
                     <div class="actions">
+
                         <a href="create-agency.html" class="promoted">Create Agency</a>
-                        <a href="create-account.html" class="promoted"><strong>Register</strong></a>
-                        <a href="sign-in.html">Sign In</a>
+                        @if(Auth::guest())
+                        <a href="{{route('register')}}" class="promoted"><strong>Register</strong></a>
+                        <a href="{{route('login')}}">Sign In</a>
+                        @else
+                        <a href="#" class="promoted">Welcome <strong>{{Auth::user()->getName()}}</strong></a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+
+                        @endif
                     </div>
                     <div class="language-bar">
                         <a href="#" class="active"><img src="assets/img/flags/gb.png" alt=""></a>
@@ -29,27 +39,12 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="navbar-brand nav" id="brand">
-                        <a href="index-google-map-fullscreen.html"><img src="assets/img/logo.png" alt="brand"></a>
+                        <a href="{{route('index')}}"><img src="assets/img/logo.png" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li class="active has-child"><a href="#">Homepage</a>
-                            <ul class="child-navigation">
-                                <li><a href="index-google-map-fullscreen.html">Google Map Full Screen</a></li>
-                                <li><a href="index-google-map-fixed-height.html">Google Map Fixed Height</a></li>
-                                <li><a href="index-google-map-fixed-navigation.html">Google Map Fixed Navigation</a></li>
-                                <li><a href="index-osm.html">OpenStreetMap Full Screen</a></li>
-                                <li><a href="index-osm-fixed-height.html">OpenStreetMap Fixed Height</a></li>
-                                <li><a href="index-osm-fixed-navigation.html">OpenStreetMap Fixed Navigation</a></li>
-                                <li><a href="index-slider.html">Slider Homepage</a></li>
-                                <li><a href="index-slider-search-box.html">Slider with Search Box</a></li>
-                                <li><a href="index-horizontal-search-floated.html">Horizontal Search Floated</a></li>
-                                <li><a href="index-advanced-horizontal-search.html">Horizontal Advanced Search</a></li>
-                                <li><a href="index-slider-horizontal-search-box.html">Horizontal Slider Search</a></li>
-                                <li><a href="index-slider-horizontal-search-box-floated.html">Horizontal Slider Floated Search</a></li>
-                            </ul>
-                        </li>
+                        <li class="active"><a href="{{route('index')}}">Home</a></li>
                         <li class="has-child"><a href="#">Properties</a>
                             <ul class="child-navigation">
                                 <li><a href="property-detail.html">Property Detail</a></li>
@@ -96,12 +91,13 @@
                             </ul>
                         </li>
                         <li><a href="submit.html">Submit</a></li>
-                        <li class="has-child"><a href="#">Blog</a>
+                        @if(Auth::user())
+                        <li class="has-child"><a href="#">Account</a>
                             <ul class="child-navigation">
-                                <li><a href="blog.html">Blog Listing</a></li>
-                                <li><a href="blog-detail.html">Blog Post Detail</a></li>
+                                <li><a href="{{route('admin')}}">Your Account</a></li>
                             </ul>
                         </li>
+                        @endif
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav><!-- /.navbar collapse-->

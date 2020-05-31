@@ -1,86 +1,98 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="inner_page_breadcrumb">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-6">
-					<div class="breadcrumb_content">
-						<h4 class="breadcrumb_title">Register</h4>
-						<ol class="breadcrumb">
-						    <li class="breadcrumb-item"><a href="#">Home</a></li>
-						    <li class="breadcrumb-item active" aria-current="page">Register</li>
-						</ol>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-    <section class="our-log-reg bgc-fa">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-lg-6 offset-lg-3">
-					<div class="sign_up_form inner_page">
-						<div class="heading">
-							<h3 class="text-center">Register</h3>
-							<p class="text-center">Have an account? <a class="text-thm" href="{{route('login')}}">Login</a></p>
-						</div>
-						<div class="details"> 
-                            <form method="POST" action="{{ route('register') }}">
-                            @csrf
-								<div class="form-group">
-							    	<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-								</div>
-								 <div class="form-group">
-							    	<input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" id="exampleInputEmail3" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
+<div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Create an Account</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <header><h1>Create an Account</h1></header>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                    <h3>Account Type</h3>
+					<form method="POST" id="form-create-account" action="{{ route('register') }}">
+                        @csrf
+                        <div class="radio" id="create-account-user">
+                            <label>
+                                <input type="radio" id="account-type-user" name="account-type" required>Regular User
+                            </label>
+                        </div>
+                        <div class="radio" id="agent-switch" data-agent-state="">
+                            <label>
+                                <input type="radio" id="account-type-agent" name="account-type" required>Agent
+                            </label>
+                        </div>
+                        <div id="agency" class="disabled">
+                            <div class="form-group">
+                                <label for="account-agency">Select your agency:</label>
+                                <select name="account-agency" id="account-agency">
+                                    <option value="">Agency</option>
+                                    <option value="1">Estate+</option>
+                                    <option value="2">Northfolk Eastate</option>
+                                    <option value="3">Maximum Properties</option>
+                                    <option value="4">Edd's Homes</option>
+                                    <option value="5">Will & Scotch</option>
+                                </select>
+                            </div><!-- /.form-group -->
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="form-create-account-full-name">Full Name:</label>
+							<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="form-create-account-full-name" placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            @error('name')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+                            @enderror
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="form-create-account-email">Email:</label>
+							<input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" id="form-create-account-email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
                                     
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-								</div>
-								<div class="form-group">
-							    	<input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword4" placeholder="Password" name="password" required autocomplete="new-password">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                  	<strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="form-create-account-password">Password:</label>
+							<input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="form-create-account-password" placeholder="Password" name="password" required autocomplete="new-password">
                                  
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    </div>
-								<div class="form-group">
-							    	<input type="password" name="password_confirmation" class="form-control" id="password-confirm" placeholder="Confirm Password" name="password_confirmation" required>
-                                </div>
-								<div class="form-group custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="exampleCheck3">
-									<label class="custom-control-label" for="exampleCheck3">Want to become an instructor?</label>
-								</div>
-								<button type="submit" class="btn btn-log btn-block btn-thm2">Register</button>
-								<div class="divide">
-									<span class="lf_divider">Or</span>
-									<hr>
-								</div>
-								<div class="row mt40">
-									<div class="col-lg">
-										<button type="submit" class="btn btn-block color-white bgc-fb mb0"><i class="fa fa-facebook float-left mt5"></i> Facebook</button>
-									</div>
-									<div class="col-lg">
-										<button type="submit" class="btn btn2 btn-block color-white bgc-gogle mb0"><i class="fa fa-google float-left mt5"></i> Google</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	@include('layouts.footer')
-@endsection
+                              	@error('password')
+                                	<span class="invalid-feedback" role="alert">
+                                    	<strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="form-create-account-confirm-password">Confirm Password:</label>
+							<input type="password" name="password_confirmation" class="form-control" id="form-create-account-confirm-password" placeholder="Confirm Password" name="password_confirmation" required>
+                                
+                        </div><!-- /.form-group -->
+                        <div class="checkbox pull-left">
+                            <label>
+                                <input type="checkbox" id="account-type-newsletter" name="account-newsletter">Receive Newsletter
+                            </label>
+                        </div>
+                        <div class="form-group clearfix">
+                            <button type="submit" class="btn pull-right btn-default" id="account-submit">Create an Account</button>
+                        </div><!-- /.form-group -->
+                    </form>
+                    <hr>
+                    <div class="center">
+                        <figure class="note">By clicking the “Create an Account” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+	@endsection
