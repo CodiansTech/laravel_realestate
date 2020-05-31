@@ -2,10 +2,39 @@
 
 @section('title', 'Homepage')
 
-@section('head')
-<style>
 
-</style>
+@section('head')
+@mapstyles
+@endsection
+
+@section('script')
+@mapscripts
+<script>
+	window.addEventListener('LaravelMaps:MapInitialized', function (event) {
+		var element = event.detail.element;
+		var map = event.detail.map;
+		var marker = event.detail.marker;
+		var service = event.detail.service;
+        var lat = {!! $property->lat !!};
+        var long = {!! $property->long !!};
+		console.log('lat: '+lat+' - long: '+long)
+		var marker2 = L.marker([lat,long]).addTo(map);
+		// 	draggable: true
+		// var marker1;
+		// map.on('click', function(e) {
+		// 	map.removeLayer(marker2);
+		// 	if (marker1) { // check
+		// 		map.removeLayer(marker1); // remove
+		// 	}
+		// 	console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
+		// 	document.getElementById("latitude").value = e.latlng.lat;
+		// 	document.getElementById("longitude").value = e.latlng.lng;
+		// 	marker1 = L.marker(e.latlng).addTo(map);
+		// });
+	});
+	
+	
+</script>
 @endsection
 
 @section('content')
@@ -27,7 +56,7 @@
                     <section id="property-detail">
                         <header class="property-title">
                             <h1>987 Cantebury Drive</h1>
-                            <figure>Golden Valley, MN 55427</figure>
+                            <figure>{{$property->address}}, {{$property->zip}}</figure>
                             <span class="actions">
                                 <!--<a href="#" class="fa fa-print"></a>-->
                                 <a href="#" class="bookmark" data-bookmark-state="empty"><span class="title-add">Add to bookmark</span><span class="title-added">Added</span></a>
@@ -63,13 +92,13 @@
                                         <dt>Location</dt>
                                             <dd>Chicago, IL 60610</dd>
                                         <dt>Price</dt>
-                                            <dd><span class="tag price">$78,000</span></dd>
+                                            <dd><span class="tag price">${{number_format($property->price)}}</span></dd>
                                         <dt>Property Type:</dt>
                                             <dd>House</dd>
                                         <dt>Status:</dt>
-                                            <dd>Sale</dd>
+                                            <dd>{{$property->getStatus()}}</dd>
                                         <dt>Area:</dt>
-                                            <dd>860 m<sup>2</sup></dd>
+                                            <dd>{{number_format($property->area)}} m<sup>2</sup></dd>
                                         <dt>Beds:</dt>
                                             <dd>3</dd>
                                         <dt>Baths:</dt>
@@ -85,19 +114,7 @@
                                 <section id="description">
                                     <header><h2>Property Description</h2></header>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum,
-                                        bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt.
-                                        Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac
-                                        turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam
-                                        mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.
-                                    </p>
-                                    <p>
-                                        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-                                        himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis
-                                        lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis
-                                        placerat nec, molestie id turpis. Cras at tincidunt magna. Mauris aliquam sem sit
-                                        amet dapibus venenatis. Sed metus orci, tincidunt sed fermentum non, ornare non quam.
-                                        Aenean nec turpis at libero lobortis pretium.
+                                       {{$property->description}}
                                     </p>
                                 </section><!-- /#description -->
                                 <section id="property-features">
@@ -120,10 +137,16 @@
                                         <a href="assets/img/properties/floor-plan-big.jpg" class="image-popup"><img alt="" src="assets/img/properties/floor-plan-02.jpg"></a>
                                     </div>
                                 </section><!-- /#floor-plans -->
-                                <section id="property-map">
+                                <section id="property-map" style="margin-bottom: 100px;">
                                     <header><h2>Map</h2></header>
                                     <div class="property-detail-map-wrapper">
-                                        <div class="property-detail-map" id="property-detail-map"></div>
+                                        <div class="property-detail-map" id="property-detail-map">
+                                        @map([
+											'lat' => $property->lat,
+											'lng' => $property->long,
+											'zoom' => 15,
+										])
+                                        </div>
                                     </div>
                                 </section><!-- /#property-map -->
                                 <section id="property-rating">
@@ -242,7 +265,7 @@
                                             <div class="property">
                                                 <a href="property-detail.html">
                                                     <div class="property-image">
-                                                        <img alt="" src="assets/img/properties/property-06.jpg">
+                                                        <img alt="" src="{{url('assets/img/properties/property-06.jpg')}}">
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">
@@ -276,7 +299,7 @@
                                             <div class="property">
                                                 <a href="property-detail.html">
                                                     <div class="property-image">
-                                                        <img alt="" src="assets/img/properties/property-04.jpg">
+                                                        <img alt="" src="{{url('assets/img/properties/property-04.jpg')}}">
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">
@@ -310,7 +333,7 @@
                                             <div class="property">
                                                 <a href="property-detail.html">
                                                     <div class="property-image">
-                                                        <img alt="" src="assets/img/properties/property-07.jpg">
+                                                        <img alt="" src="{{url('assets/img/properties/property-07.jpg')}}">
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">

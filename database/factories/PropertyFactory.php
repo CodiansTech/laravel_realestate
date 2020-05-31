@@ -14,10 +14,10 @@ $factory->define(Property::class, function (Faker $faker) {
         'area' => rand(1,100),
         'rooms' => rand(1,8),
         'address' => $faker->address,
-        'neighborhood' => Str::random(10),
         'city' => Str::random(10),
         'lat' => rand(1,2),
         'long' => rand(1,2),
         'zip' => rand(5,100),
+        'status' => rand(0,1),
     ];
 });

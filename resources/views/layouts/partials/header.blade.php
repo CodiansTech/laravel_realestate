@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="navbar-brand nav" id="brand">
-                        <a href="{{route('index')}}"><img src="assets/img/logo.png" alt="brand"></a>
+                        <a href="{{route('index')}}"><img src="{{URL::asset('assets/img/logo.png')}}" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -101,9 +101,11 @@
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav><!-- /.navbar collapse-->
+                @if(Auth::user())
                 <div class="add-your-property">
-                    <a href="submit.html" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
+                    <a href="{{route('admin.properties.create')}}" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
                 </div>
+                @endif
             </header><!-- /.navbar -->
         </div><!-- /.container -->
     </div><!-- /.navigation -->

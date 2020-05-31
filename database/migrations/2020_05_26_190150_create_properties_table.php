@@ -24,8 +24,8 @@ class CreatePropertiesTable extends Migration
             $table->string('city');
             $table->double('lat', 10, 8);
             $table->double('long', 11, 8);
-            $table->string('neighborhood');
             $table->string('zip');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

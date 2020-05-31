@@ -9,9 +9,10 @@ use Session;
 
 class PropertyController extends Controller
 {
+    
     public function adminIndex(){
         $user = factory(Property::class)->make();
-        $properties = Property::paginate(10);
+        $properties = Property::orderBy('id', 'desc')->paginate(10);
         return view('admin.pages.properties.index')->withProperties($properties);
     }
 
@@ -28,7 +29,6 @@ class PropertyController extends Controller
             'rooms' => 'integer',
             'address' => 'required|min:3|max:255',
             'city' => 'required|min:3|max:255',
-            'neighborhood' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
         ]);
         $property = new Property();
@@ -39,12 +39,12 @@ class PropertyController extends Controller
         $property->rooms = $request->rooms;
         $property->address = $request->address;
         $property->city = $request->city;
-        $property->neighborhood = $request->neighborhood;
         $property->zip = $request->zip;
         $property->long = $request->longitude;
         $property->lat = $request->latitude;
+        $property->status = $request->status;
         $property->save();
-        
+
         if($request->hasfile('filename'))
         {
             foreach($request->file('filename') as $img)
@@ -77,7 +77,6 @@ class PropertyController extends Controller
             'rooms' => 'integer',
             'address' => 'required|min:3|max:255',
             'city' => 'required|min:3|max:255',
-            'neighborhood' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
         ]);
 
@@ -90,10 +89,10 @@ class PropertyController extends Controller
         $property->rooms = $request->rooms;
         $property->address = $request->address;
         $property->city = $request->city;
-        $property->neighborhood = $request->neighborhood;
         $property->zip = $request->zip;
         $property->long = $request->longitude;
         $property->lat = $request->latitude;
+        $property->status = $request->status;
         $property->update();
 
         Session::flash('success', 'Property udpated');
@@ -115,4 +114,8 @@ class PropertyController extends Controller
         return redirect()->back();
     }
 
+    public function show($id){
+        $property = Property::findOrFail($id);
+        return view('pages.properties.property_details')->withProperty($property);
+    }
 }

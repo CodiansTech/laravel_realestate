@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('pages.index');
 })->name('index');
 
-Route::get('house', function () {
-    return view('pages.properties.property_details');
-});
+Route::get('list/{id}', 'PropertyController@show')->name('showProperty');
 
 Route::get('list', function () {
     return view('pages.properties.grid_listing');
@@ -29,21 +27,21 @@ Route::get('list', function () {
 Auth::routes();
 
 Route::group(['middleware' => ['permission:view-admin']], function () {
-    Route::get('admin', function () {
+    Route::get('account', function () {
         return view('admin.pages.index');
     })->name('admin');
 });
 
 Route::group(['middleware' => ['permission:manage-users']], function () {
-    Route::get('admin/users', 'UserController@index')->name('admin.users.index');
-    Route::get('admin/users/{id}/edit', 'UserController@edit')->name('admin.users.edit');
-    Route::post('admin/users/{id}/edit', 'UserController@update')->name('admin.users.update');
+    Route::get('account/users', 'UserController@index')->name('admin.users.index');
+    Route::get('account/users/{id}/edit', 'UserController@edit')->name('admin.users.edit');
+    Route::post('account/users/{id}/edit', 'UserController@update')->name('admin.users.update');
 });
 
 Route::group(['middleware' => ['permission:manage-properties']], function () {
-    Route::get('admin/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
-    Route::get('admin/properties/create', 'PropertyController@create')->name('admin.properties.create');
-    Route::post('admin/properties/store', 'PropertyController@store')->name('admin.properties.store');
-    Route::get('admin/properties/{id}/edit', 'PropertyController@edit')->name('admin.properties.edit');
-    Route::post('admin/properties/{id}/update', 'PropertyController@update')->name('admin.properties.update');
+    Route::get('account/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
+    Route::get('account/properties/create', 'PropertyController@create')->name('admin.properties.create');
+    Route::post('account/properties/store', 'PropertyController@store')->name('admin.properties.store');
+    Route::get('account/properties/{id}/edit', 'PropertyController@edit')->name('admin.properties.edit');
+    Route::post('account/properties/{id}/update', 'PropertyController@update')->name('admin.properties.update');
 });

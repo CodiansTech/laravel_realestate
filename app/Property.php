@@ -10,4 +10,10 @@ class Property extends Model
     public function images(){
         return $this->hasMany('App\Image');
     }
+
+    public function getStatus(){
+        if($this->status == 0)
+            return 'Sale';
+        return 'Rent';
+    }
 }
