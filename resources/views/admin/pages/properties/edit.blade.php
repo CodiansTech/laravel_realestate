@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('admintitle', 'Add property')
+@section('admintitle', 'Edit '.$property->title)
 
 @section('adminhead')
 @mapstyles
@@ -14,10 +14,13 @@
 		var map = event.detail.map;
 		var marker = event.detail.marker;
 		var service = event.detail.service;
-		
+        var lat = document.getElementById("latitude").value;
+        var long = document.getElementById("longitude").value;
+		var marker2 = L.marker([lat,long]).addTo(map);
 		// 	draggable: true
 		var marker1;
 		map.on('click', function(e) {
+			map.removeLayer(marker2);
 			if (marker1) { // check
 				map.removeLayer(marker1); // remove
 			}
@@ -34,7 +37,7 @@
 @section('content')
 <div class="col-lg-12 mb10">
 							<div class="breadcrumb_content style2">
-								<h2 class="breadcrumb_title">Add New Property</h2>
+								<h2 class="breadcrumb_title">Edit {{$property->title}}</h2>
 								<p>We are glad to see you again!</p>
 							</div>
 						</div>
@@ -42,30 +45,30 @@
 							<div class="my_dashboard_review">
 								<div class="row">
 									<div class="col-lg-12">
-                            		<form method="POST" action="{{ route('admin.properties.store') }}">
+                            		<form method="POST" action="{{ route('admin.properties.update',$property->id) }}">
 									@csrf
-										<h4 class="mb30">Create Listing</h4>
+										<h4 class="mb30">Edit Listing</h4>
 										<div class="my_profile_setting_input form-group">
 									    	<label for="propertyTitle">Property Title</label>
-									    	<input type="text" class="form-control" id="propertyTitle" name="title">
+									    	<input type="text" class="form-control" id="propertyTitle" name="title" value="{{$property->title}}">
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<div class="my_profile_setting_textarea">
 										    <label for="propertyDescription">Description</label>
-										    <textarea class="form-control" id="propertyDescription" rows="7" name="description"></textarea>
+										    <textarea class="form-control" id="propertyDescription" rows="7" name="description">{{$property->description}}</textarea>
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="formGroupExamplePrice">Price</label>
-									    	<input type="text" class="form-control" id="formGroupExamplePrice" name="price">
+									    	<input type="text" class="form-control" id="formGroupExamplePrice" name="price" value="{{$property->price}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="formGroupExampleArea">Area</label>
-									    	<input type="text" class="form-control" id="formGroupExampleArea" name="area">
+									    	<input type="text" class="form-control" id="formGroupExampleArea" name="area" value="{{$property->area}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
@@ -91,32 +94,32 @@
 										<h4 class="mb30">Location</h4>
 										<div class="my_profile_setting_input form-group">
 									    	<label for="propertyAddress">Address</label>
-									    	<input type="text" class="form-control" id="propertyAddress" name="address">
+									    	<input type="text" class="form-control" id="propertyAddress" name="address" value="{{$property->address}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="propertyCity">City</label>
-									    	<input type="text" class="form-control" id="propertyCity" name="city">
+									    	<input type="text" class="form-control" id="propertyCity" name="city" value="{{$property->city}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="neighborHood">Neighborhood</label>
-									    	<input type="text" class="form-control" id="neighborHood" name="neighborhood">
+									    	<input type="text" class="form-control" id="neighborHood" name="neighborhood" value="{{$property->neighborhood}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="zipCode">Zip</label>
-									    	<input type="text" class="form-control" id="zipCode" name="zip">
+									    	<input type="text" class="form-control" id="zipCode" name="zip" value="{{$property->zip}}">
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<div class="my_profile_setting_input form-group">
 											@map([
-												'lat' => 51.5287718,
-												'lng' => -0.2416804,
+												'lat' => $property->lat,
+												'lng' => $property->long,
 												'zoom' => 8,
 											])
 										</div>
@@ -124,13 +127,13 @@
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="googleMapLat">Latitude (for Google Maps)</label>
-									    	<input type="text" class="form-control" id="latitude" name="latitude">
+									    	<input type="text" class="form-control" id="latitude" name="latitude" value="{{$property->lat}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="googleMapLong">Longitude (for Google Maps)</label>
-									    	<input type="text" class="form-control" id="longitude" name="longitude">
+									    	<input type="text" class="form-control" id="longitude" name="longitude" value="{{$property->long}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
@@ -194,7 +197,7 @@
 							<div class="col-xl-12">
 								<div class="my_profile_setting_input">
 									<button class="btn btn1 float-left">Back</button>
-									<button type="submit" class="btn btn2 float-right">Create</button>
+									<button type="submit" class="btn btn2 float-right">Update</button>
 								</div>
 							</div>
 							</form>

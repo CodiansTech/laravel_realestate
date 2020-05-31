@@ -46,6 +46,7 @@
 										    	</tr>
 											</thead>
 											<tbody>
+											@foreach($properties as $property)
 										    	<tr>
 										    		<th scope="row">
 														<div class="feat_property list favorite_page style2">
@@ -60,23 +61,24 @@
 															</div>
 															<div class="details">
 																<div class="tc_content">
-																	<h4>Renovated Apartment</h4>
-																	<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-																	<a class="fp_price text-thm" href="#">$13,000<small>/mo</small></a>
+																	<h4>{{$property->title}}</h4>
+																	<p><span class="flaticon-placeholder"></span> {{$property->address}}, {{$property->city}}, {{$property->zip}}</p>
+																	<a class="fp_price text-thm" href="#">&#163; {{number_format($property->price)}}<small>/mo</small></a>
 																</div>
 															</div>
 														</div>
 										    		</th>
-										    		<td>30 December, 2020</td>
+										    		<td>{{$property->created_at->format('d M, Y')}}</td>
 										    		<td><span class="status_tag badge">Pending</span></td>
 										    		<td>2,345</td>
 										    		<td>
 										    			<ul class="view_edit_delete_list mb0">
-										    				<li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Edit"><a href="#"><span class="flaticon-edit"></span></a></li>
+										    				<li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Edit"><a href="{{route('admin.properties.edit', $property->id)}}"><span class="flaticon-edit"></span></a></li>
 										    				<li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#"><span class="flaticon-garbage"></span></a></li>
 										    			</ul>
 										    		</td>
 										    	</tr>
+												@endforeach
 										    	<tr>
 										    		<th scope="row">
 														<div class="feat_property list favorite_page style2">
@@ -173,23 +175,8 @@
 											</tbody>
 										</table>
 									</div>
-									<div class="mbp_pagination">
-										<ul class="page_navigation">
-										    <li class="page-item disabled">
-										    	<a class="page-link" href="#" tabindex="-1" aria-disabled="true"> <span class="flaticon-left-arrow"></span> Prev</a>
-										    </li>
-										    <li class="page-item"><a class="page-link" href="#">1</a></li>
-										    <li class="page-item active" aria-current="page">
-										    	<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-										    </li>
-										    <li class="page-item"><a class="page-link" href="#">3</a></li>
-										    <li class="page-item"><a class="page-link" href="#">...</a></li>
-										    <li class="page-item"><a class="page-link" href="#">29</a></li>
-										    <li class="page-item">
-										    	<a class="page-link" href="#"><span class="flaticon-right-arrow"></span></a>
-										    </li>
-										</ul>
-									</div>
+									
+									{{$properties->render()}}
 								</div>
 							</div>
 						</div>
