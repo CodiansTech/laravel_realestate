@@ -17,11 +17,9 @@ Route::get('/', function () {
     return view('pages.index');
 })->name('index');
 
-Route::get('list/{id}', 'PropertyController@show')->name('showProperty');
 
-Route::get('list', function () {
-    return view('pages.properties.grid_listing');
-});
+Route::get('list', 'PropertyController@listProperties')->name('listproperties');
+Route::get('list/{id}', 'PropertyController@show')->name('showProperty');
 
 
 Auth::routes();

@@ -45,14 +45,7 @@
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{route('index')}}">Home</a></li>
-                        <li class="has-child"><a href="#">Properties</a>
-                            <ul class="child-navigation">
-                                <li><a href="property-detail.html">Property Detail</a></li>
-                                <li><a href="properties-listing.html">Masonry Listing</a></li>
-                                <li><a href="properties-listing-grid.html">Grid Listing</a></li>
-                                <li><a href="properties-listing-lines.html">Lines Listing</a></li>
-                            </ul>
-                        </li>
+                        <li class=""><a href="{{route('listproperties')}}">Properties</a></li>
                         <li class="has-child"><a href="#">Pages</a>
                             <ul class="child-navigation">
                                 <li><a href="about-us.html">About Us</a></li>

@@ -16,6 +16,11 @@ class PropertyController extends Controller
         return view('admin.pages.properties.index')->withProperties($properties);
     }
 
+    public function listProperties(){
+        $properties = Property::orderBy('id', 'desc')->paginate(15);
+        return view('pages.properties.grid_listing')->withProperties($properties);
+    }
+
     public function create(){
         return view('admin.pages.properties.create');
     }
