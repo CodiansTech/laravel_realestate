@@ -21,6 +21,9 @@ Route::get('house', function () {
     return view('pages.properties.property_details');
 });
 
+Route::get('list', function () {
+    return view('pages.properties.grid_listing');
+});
 
 
 Auth::routes();

@@ -2457,7 +2457,7 @@ ul.list-links li a:hover {
 }
 
 .property {
-  margin-bottom: 30px;
+  margin-bottom: 30px !important;
   overflow: hidden;
   position: relative;
   width: 100%;

@@ -7,6 +7,7 @@
     <link href="{{ URL::asset('assets/fonts/font-awesome.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-select.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/jquery.slider.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/owl.carousel.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/owl.transitions.css') }}" type="text/css">
