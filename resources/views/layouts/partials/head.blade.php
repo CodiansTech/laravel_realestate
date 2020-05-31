@@ -14,6 +14,6 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}" type="text/css">
     @yield('head')
 
-    <title>Zoner | Slider with Horizontal Search Box Homepage</title>
+    <title>@yield('title')</title>
 
 </head>
