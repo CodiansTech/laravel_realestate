@@ -1,1473 +1,680 @@
-@extends('layouts.mainhome')
+@extends('layouts.main')
 
 @section('title', 'Homepage')
 
 @section('head')
-    <style>
+<style>
 
-    </style>
+</style>
 @endsection
 
 @section('content')
+    <!-- Slider -->
+    <div id="slider" class="loading has-parallax">
+        <div id="loading-icon"><i class="fa fa-cog fa-spin"></i></div>
+        <div class="owl-carousel homepage-slider carousel-full-width">
+            <div class="slide">
+                <div class="container">
+                    <div class="overlay">
+                        <div class="info">
+                            <div class="tag price">$ 11,000</div>
+                            <h3>3398 Lodgeville Road</h3>
+                            <figure>Golden Valley, MN 55427</figure>
+                        </div>
+                        <hr>
+                        <a href="property-detail.html" class="link-arrow">Read More</a>
+                    </div>
+                </div>
+                <img alt="" src="assets/img/slide-01.jpg">
+            </div>
+            <div class="slide">
+                <div class="container">
+                    <div class="overlay">
+                        <div class="info">
+                            <div class="tag price">$ 16,000</div>
+                            <h3>987 Cantebury Drive</h3>
+                            <figure>Chicago, IL 60610</figure>
+                        </div>
+                        <hr>
+                        <a href="property-detail.html" class="link-arrow">Read More</a>
+                    </div>
+                </div>
+                <img alt="" src="assets/img/slide-02.jpg">
+            </div>
+            <div class="slide">
+                <div class="container">
+                    <div class="overlay">
+                        <div class="info">
+                            <div class="tag price">$ 28,500</div>
+                            <h3>1866 Clement Street</h3>
+                            <figure>Atlanta, GA 30303</figure>
+                        </div>
+                        <hr>
+                        <a href="property-detail.html" class="link-arrow">Read More</a>
+                    </div>
+                </div>
+                <img alt="" src="assets/img/slide-03.jpg">
+            </div>
+        </div>
+    </div>
+    <!-- end Slider -->
 
-    	<!-- Modal -->
-	<div class="sign_up_modal modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
-		    <div class="modal-content">
-		      	<div class="modal-header">
-		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		      	</div>
-		      	<div class="modal-body container pb20">
-		      		<div class="row">
-		      			<div class="col-lg-12">
-				    		<ul class="sign_up_tab nav nav-tabs" id="myTab" role="tablist">
-							  	<li class="nav-item">
-							    	<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
-							  	</li>
-							  	<li class="nav-item">
-							    	<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
-							  	</li>
-							</ul>
-		      			</div>
-		      		</div>
-					<div class="tab-content container" id="myTabContent">
-					  	<div class="row mt25 tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-					  		<div class="col-lg-6 col-xl-6">
-					  			<div class="login_thumb">
-					  				<img class="img-fluid w100" src="{{ URL::asset('assets/images/resource/login.jpg') }}" alt="login.jpg">
-					  			</div>
-					  		</div>
-					  		<div class="col-lg-6 col-xl-6">
-								<div class="login_form">
-									<form action="#">
-										<div class="heading">
-											<h4>Login</h4>
-										</div>
-										<div class="row mt25">
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-fb btn-block"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
-											</div>
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-googl btn-block"><i class="fa fa-google float-left mt5"></i> Login with Google</button>
-											</div>
-										</div>
-										<hr>
-										<div class="input-group mb-2 mr-sm-2">
-										    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="User Name Or Email">
-										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="flaticon-user"></i></div>
-										    </div>
-										</div>
-										<div class="input-group form-group">
-									    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="flaticon-password"></i></div>
-										    </div>
-										</div>
-										<div class="form-group custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="exampleCheck1">
-											<label class="custom-control-label" for="exampleCheck1">Remember me</label>
-											<a class="btn-fpswd float-right" href="#">Lost your password?</a>
-										</div>
-										<button type="submit" class="btn btn-log btn-block btn-thm">Log In</button>
-										<p class="text-center">Don't have an account? <a class="text-thm" href="#">Register</a></p>
-									</form>
-								</div>
-					  		</div>
-					  	</div>
-					  	<div class="row mt25 tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					  		<div class="col-lg-6 col-xl-6">
-					  			<div class="regstr_thumb">
-					  				<img class="img-fluid w100" src="{{ URL::asset('assets/images/resource/regstr.jpg') }}" alt="regstr.jpg">
-					  			</div>
-					  		</div>
-					  		<div class="col-lg-6 col-xl-6">
-								<div class="sign_up_form">
-									<div class="heading">
-										<h4>Register</h4>
-									</div>
-									<form action="#">
-										<div class="row">
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
-											</div>
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Login with Google</button>
-											</div>
-										</div>
-										<hr>
-										<div class="form-group input-group">
-										    <input type="text" class="form-control" id="exampleInputName" placeholder="User Name">
-										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="flaticon-user"></i></div>
-										    </div>
-										</div>
-										<div class="form-group input-group">
-										    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
-										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
-										    </div>
-										</div>
-										<div class="form-group input-group">
-										    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="flaticon-password"></i></div>
-										    </div>
-										</div>
-										<div class="form-group input-group">
-										    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Re-enter password">
-										    <div class="input-group-prepend">
-										    	<div class="input-group-text"><i class="flaticon-password"></i></div>
-										    </div>
-										</div>
-										<div class="form-group ui_kit_select_search mb0">
-											<select class="selectpicker" data-live-search="true" data-width="100%">
-												<option data-tokens="SelectRole">Single User</option>
-												<option data-tokens="Agent/Agency">Agent</option>
-												<option data-tokens="SingleUser">Multi User</option>
-											</select>
-										</div>
-										<div class="form-group custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="exampleCheck2">
-											<label class="custom-control-label" for="exampleCheck2">I have read and accept the Terms and Privacy Policy?</label>
-										</div>
-										<button type="submit" class="btn btn-log btn-block btn-thm">Sign Up</button>
-										<p class="text-center">Already have an account? <a class="text-thm" href="#">Log In</a></p>
-									</form>
-								</div>
-					  		</div>
-					  	</div>
-					</div>
-		      	</div>
-		    </div>
-		</div>
-	</div>
+    <div class="search-box-wrapper">
+        <div class="search-box-inner">
+            <div class="container">
+                <div class="search-box map">
+                    <form role="form" id="form-map-sale" class="form-map form-search clearfix">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-4">
+                                <div class="form-group">
+                                    <select name="form-sale-country">
+                                        <option value="">Country</option>
+                                        <option value="1">France</option>
+                                        <option value="2">Great Britain</option>
+                                        <option value="3">Spain</option>
+                                        <option value="4">Russia</option>
+                                        <option value="5">United States</option>
+                                    </select>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-2 col-sm-4">
+                                <div class="form-group">
+                                    <select name="form-sale-city">
+                                        <option value="">City</option>
+                                        <option value="1">New York</option>
+                                        <option value="2">Los Angeles</option>
+                                        <option value="3">Chicago</option>
+                                        <option value="4">Houston</option>
+                                        <option value="5">Philadelphia</option>
+                                    </select>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-2 col-sm-4">
+                                <div class="form-group">
+                                    <select name="form-sale-district">
+                                        <option value="">District</option>
+                                        <option value="1">Manhattan</option>
+                                        <option value="2">The Bronx</option>
+                                        <option value="3">Brooklyn</option>
+                                        <option value="4">Queens</option>
+                                        <option value="5">Staten Island</option>
+                                    </select>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-2 col-sm-4">
+                                <div class="form-group">
+                                    <select name="form-sale-property-type">
+                                        <option value="">Property Type</option>
+                                        <option value="1">Apartment</option>
+                                        <option value="2">Condominium</option>
+                                        <option value="3">Cottage</option>
+                                        <option value="4">Flat</option>
+                                        <option value="5">House</option>
+                                    </select>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-2 col-sm-4">
+                                <div class="form-group">
+                                    <select name="form-sale-price">
+                                        <option value="">Price</option>
+                                        <option value="1">$10,000 +</option>
+                                        <option value="2">$50,000 +</option>
+                                        <option value="3">$100,000 +</option>
+                                        <option value="4">$500,000 +</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default">Search Sale</button>
+                                </div><!-- /.form-group -->
+                            </div>
+                        </div>
+                    </form><!-- /#form-map -->
+                </div><!-- /.search-box -->
+            </div><!-- /.container -->
+        </div><!-- /.search-box-inner -->
+        <div class="background-image"><img class="opacity-20" src="assets/img/searchbox-bg.jpg"></div>
+    </div>
+    <!-- end Search Box -->
 
-	<!-- Home Design -->
-	<section class="home-one home1-overlay home1_bgi1">
-		<div class="container">
-			<div class="row posr">
-				<div class="col-lg-12">
-					<div class="home_content">
-						<div class="home-text text-center">
-							<h2 class="fz55">Find Your Dream Home</h2>
-							<p class="fz18 color-white">From as low as $10 per day with limited time offer discounts.</p>
-						</div>
-						<div class="home_adv_srch_opt">
-							<ul class="nav nav-pills" id="pills-tab" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Buy</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Rent</a>
-								</li>
-							</ul>
-							<div class="tab-content home1_adsrchfrm" id="pills-tabContent">
-								<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-									<div class="home1-advnc-search">
-										<ul class="h1ads_1st_list mb0">
-											<li class="list-inline-item">
-											    <div class="form-group">
-											    	<input type="text" class="form-control" id="exampleInputName1" placeholder="Enter keyword...">
-											    </div>
-											</li>
-											<li class="list-inline-item">
-												<div class="search_option_two">
-													<div class="candidate_revew_select">
-														<select class="selectpicker w100 show-tick">
-															<option>Property Type</option>
-															<option>Apartment</option>
-															<option>Bungalow</option>
-															<option>Condo</option>
-															<option>House</option>
-															<option>Land</option>
-															<option>Single Family</option>
-														</select>
-													</div>
-												</div>
-											</li>
-											<li class="list-inline-item">
-											    <div class="form-group">
-											    	<input type="text" class="form-control" id="exampleInputEmail" placeholder="Location">
-											    	<label for="exampleInputEmail"><span class="flaticon-maps-and-flags"></span></label>
-											    </div>
-											</li>
-											<li class="list-inline-item">
-												<div class="small_dropdown2">
-												    <div id="prncgs" class="btn dd_btn">
-												    	<span>Price</span>
-												    	<label for="exampleInputEmail2"><span class="fa fa-angle-down"></span></label>
-												    </div>
-												  	<div class="dd_content2">
-													    <div class="pricing_acontent">
-															<input type="text" class="amount" placeholder="$52,239"> 
-															<input type="text" class="amount2" placeholder="$985,14">
-															<div class="slider-range"></div>
-													    </div>
-												  	</div>
-												</div>
-											</li>
-											<li class="custome_fields_520 list-inline-item">
-												<div class="navbered">
-												  	<div class="mega-dropdown">
-													    <span id="show_advbtn" class="dropbtn">Advanced <i class="flaticon-more pl10 flr-520"></i></span>
-													    <div class="dropdown-content">
-													      	<div class="row p15">
-													      		<div class="col-lg-12">
-													      			<h4 class="text-thm3">Amenities</h4>
-													      		</div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck1">
-																				<label class="custom-control-label" for="customCheck1">Air Conditioning</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck2">
-																				<label class="custom-control-label" for="customCheck2">Lawn</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck3">
-																				<label class="custom-control-label" for="customCheck3">Swimming Pool</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck4">
-																				<label class="custom-control-label" for="customCheck4">Barbeque</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck5">
-																				<label class="custom-control-label" for="customCheck5">Microwave</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck6">
-																				<label class="custom-control-label" for="customCheck6">TV Cable</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck7">
-																				<label class="custom-control-label" for="customCheck7">Dryer</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck8">
-																				<label class="custom-control-label" for="customCheck8">Outdoor Shower</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck9">
-																				<label class="custom-control-label" for="customCheck9">Washer</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck10">
-																				<label class="custom-control-label" for="customCheck10">Gym</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck11">
-																				<label class="custom-control-label" for="customCheck11">Refrigerator</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck12">
-																				<label class="custom-control-label" for="customCheck12">WiFi</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck13">
-																				<label class="custom-control-label" for="customCheck13">Laundry</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck14">
-																				<label class="custom-control-label" for="customCheck14">Sauna</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck15">
-																				<label class="custom-control-label" for="customCheck15">Window Coverings</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-													      	</div>
-													      	<div class="row p15 pt0-xsd">
-													      		<div class="col-lg-11 col-xl-10">
-													      			<ul class="apeartment_area_list mb0">
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Bathrooms</option>
-																					<option>1</option>
-																					<option>2</option>
-																					<option>3</option>
-																					<option>4</option>
-																					<option>5</option>
-																					<option>6</option>
-																					<option>7</option>
-																					<option>8</option>
-																				</select>
-																			</div>
-													      				</li>
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Bedrooms</option>
-																					<option>1</option>
-																					<option>2</option>
-																					<option>3</option>
-																					<option>4</option>
-																					<option>5</option>
-																					<option>6</option>
-																					<option>7</option>
-																					<option>8</option>
-																				</select>
-																			</div>
-													      				</li>
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Year built</option>
-																					<option>2013</option>
-																					<option>2014</option>
-																					<option>2015</option>
-																					<option>2016</option>
-																					<option>2017</option>
-																					<option>2018</option>
-																					<option>2019</option>
-																					<option>2020</option>
-																				</select>
-																			</div>
-													      				</li>
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Built-up Area</option>
-																					<option>Adana</option>
-																					<option>Ankara</option>
-																					<option>Antalya</option>
-																					<option>Bursa</option>
-																					<option>Bodrum</option>
-																					<option>Gaziantep</option>
-																					<option>İstanbul</option>
-																					<option>İzmir</option>
-																					<option>Konya</option>
-																				</select>
-																			</div>
-													      				</li>
-													      			</ul>
-													      		</div>
-													      		<div class="col-lg-1 col-xl-2">
-													      			<div class="mega_dropdown_content_closer">
-														      			<h5 class="text-thm text-right mt15"><span id="hide_advbtn" class="curp">Hide</span></h5>
-													      			</div>
-													      		</div>
-													      	</div>
-													    </div>
-													</div>
-												</div>
-											</li>
-											<li class="list-inline-item">
-												<div class="search_option_button">
-												    <button type="submit" class="btn btn-thm">Search</button>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-									<div class="home1-advnc-search">
-										<ul class="h1ads_1st_list mb0">
-											<li class="list-inline-item">
-											    <div class="form-group">
-											    	<input type="text" class="form-control" id="exampleInputName2" placeholder="Enter keyword...">
-											    </div>
-											</li>
-											<li class="list-inline-item">
-												<div class="search_option_two">
-													<div class="candidate_revew_select">
-														<select class="selectpicker w100 show-tick">
-															<option>Property Type</option>
-															<option>Apartment</option>
-															<option>Bungalow</option>
-															<option>Condo</option>
-															<option>House</option>
-															<option>Land</option>
-															<option>Single Family</option>
-														</select>
-													</div>
-												</div>
-											</li>
-											<li class="list-inline-item">
-											    <div class="form-group">
-											    	<input type="text" class="form-control" id="exampleInputEmail3" placeholder="Location">
-											    	<label for="exampleInputEmail3"><span class="flaticon-maps-and-flags"></span></label>
-											    </div>
-											</li>
-											<li class="list-inline-item">
-												<div class="small_dropdown2">
-												    <div id="prncgs2" class="btn dd_btn">
-												    	<span>Price</span>
-												    	<label for="exampleInputEmail4"><span class="fa fa-angle-down"></span></label>
-												    </div>
-												  	<div class="dd_content2">
-													    <div class="pricing_acontent">
-															<input type="text" class="amount" placeholder="$52,239"> 
-															<input type="text" class="amount2" placeholder="$985,14">
-															<div class="slider-range"></div>
-													    </div>
-												  	</div>
-												</div>
-											</li>
-											<li class="custome_fields_520 list-inline-item">
-												<div class="navbered">
-												  	<div class="mega-dropdown">
-													    <span id="show_advbtn2" class="dropbtn">Advanced <i class="flaticon-more pl10 flr-520"></i></span>
-													    <div class="dropdown-content">
-													      	<div class="row p15">
-													      		<div class="col-lg-12">
-													      			<h4 class="text-thm3">Amenities</h4>
-													      		</div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck16">
-																				<label class="custom-control-label" for="customCheck16">Air Conditioning</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck17">
-																				<label class="custom-control-label" for="customCheck17">Lawn</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck18">
-																				<label class="custom-control-label" for="customCheck18">Swimming Pool</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck19">
-																				<label class="custom-control-label" for="customCheck19">Barbeque</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck20">
-																				<label class="custom-control-label" for="customCheck20">Microwave</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck21">
-																				<label class="custom-control-label" for="customCheck21">TV Cable</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck22">
-																				<label class="custom-control-label" for="customCheck22">Dryer</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck23">
-																				<label class="custom-control-label" for="customCheck23">Outdoor Shower</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck24">
-																				<label class="custom-control-label" for="customCheck24">Washer</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck25">
-																				<label class="custom-control-label" for="customCheck25">Gym</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck26">
-																				<label class="custom-control-label" for="customCheck26">Refrigerator</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck27">
-																				<label class="custom-control-label" for="customCheck27">WiFi</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-														        <div class="col-xxs-6 col-sm col-lg col-xl">
-													                <ul class="ui_kit_checkbox selectable-list">
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck28">
-																				<label class="custom-control-label" for="customCheck28">Laundry</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck29">
-																				<label class="custom-control-label" for="customCheck29">Sauna</label>
-																			</div>
-													                	</li>
-													                	<li>
-																			<div class="custom-control custom-checkbox">
-																				<input type="checkbox" class="custom-control-input" id="customCheck30">
-																				<label class="custom-control-label" for="customCheck30">Window Coverings</label>
-																			</div>
-													                	</li>
-													                </ul>
-														        </div>
-													      	</div>
-													      	<div class="row p15 pt0-xsd">
-													      		<div class="col-lg-11 col-xl-10">
-													      			<ul class="apeartment_area_list mb0">
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Bathrooms</option>
-																					<option>1</option>
-																					<option>2</option>
-																					<option>3</option>
-																					<option>4</option>
-																					<option>5</option>
-																					<option>6</option>
-																					<option>7</option>
-																					<option>8</option>
-																				</select>
-																			</div>
-													      				</li>
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Bedrooms</option>
-																					<option>1</option>
-																					<option>2</option>
-																					<option>3</option>
-																					<option>4</option>
-																					<option>5</option>
-																					<option>6</option>
-																					<option>7</option>
-																					<option>8</option>
-																				</select>
-																			</div>
-													      				</li>
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Year built</option>
-																					<option>2013</option>
-																					<option>2014</option>
-																					<option>2015</option>
-																					<option>2016</option>
-																					<option>2017</option>
-																					<option>2018</option>
-																					<option>2019</option>
-																					<option>2020</option>
-																				</select>
-																			</div>
-													      				</li>
-													      				<li class="list-inline-item">
-																			<div class="candidate_revew_select">
-																				<select class="selectpicker w100 show-tick">
-																					<option>Built-up Area</option>
-																					<option>Adana</option>
-																					<option>Ankara</option>
-																					<option>Antalya</option>
-																					<option>Bursa</option>
-																					<option>Bodrum</option>
-																					<option>Gaziantep</option>
-																					<option>İstanbul</option>
-																					<option>İzmir</option>
-																					<option>Konya</option>
-																				</select>
-																			</div>
-													      				</li>
-													      			</ul>
-													      		</div>
-													      		<div class="col-lg-1 col-xl-2">
-													      			<div class="mega_dropdown_content_closer">
-														      			<h5 class="text-thm text-right mt15"><span id="hide_advbtn2" class="curp">Hide</span></h5>
-													      			</div>
-													      		</div>
-													      	</div>
-													    </div>
-													</div>
-												</div>
-											</li>
-											<li class="list-inline-item">
-												<div class="search_option_button">
-												    <button type="submit" class="btn btn-thm">Search</button>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Feature Properties -->
-	<section id="feature-property" class="feature-property bgc-f7">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<a href="#feature-property">
-				    	<div class="mouse_scroll">
-			        		<div class="icon">
-					    		<h4>Scroll Down</h4>
-					    		<p>to discover more</p>
-			        		</div>
-			        		<div class="thumb">
-			        			<img src="{{ URL::asset('assets/images/resource/mouse.png') }}" alt="mouse.png">
-			        		</div>
-				    	</div>
-				    </a>
-				</div>
-			</div>
-		</div>
-		<div class="container ovh">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="main-title text-center mb40">
-						<h2>Featured Properties</h2>
-						<p>Handpicked properties by our team.</p>
-					</div>
-				</div>
-				<div class="col-lg-12">
-					<div class="feature_property_slider">
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp1.jpg') }}" alt="fp1.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-											<li class="list-inline-item"><a href="#">Featured</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp2.jpg') }}" alt="fp2.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp3.jpg') }}" alt="fp3.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Sale</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp1.jpg') }}" alt="fp1.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-											<li class="list-inline-item"><a href="#">Featured</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp2.jpg') }}" alt="fp2.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp3.jpg') }}" alt="fp3.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Sale</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp1.jpg') }}" alt="fp1.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-											<li class="list-inline-item"><a href="#">Featured</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp2.jpg') }}" alt="fp2.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp3.jpg') }}" alt="fp3.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Sale</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp1.jpg') }}" alt="fp1.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-											<li class="list-inline-item"><a href="#">Featured</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp2.jpg') }}" alt="fp2.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Rent</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feat_property">
-								<div class="thumb">
-									<img class="img-whp" src="{{ URL::asset('assets/images/property/fp3.jpg') }}" alt="fp3.jpg">
-									<div class="thmb_cntnt">
-										<ul class="tag mb0">
-											<li class="list-inline-item"><a href="#">For Sale</a></li>
-										</ul>
-										<ul class="icon mb0">
-											<li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-											<li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-										</ul>
-										<a class="fp_price" href="#">$13,000<small>/mo</small></a>
-									</div>
-								</div>
-								<div class="details">
-									<div class="tc_content">
-										<p class="text-thm">Apartment</p>
-										<h4>Renovated Apartment</h4>
-										<p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-										<ul class="prop_details mb0">
-											<li class="list-inline-item"><a href="#">Beds: 4</a></li>
-											<li class="list-inline-item"><a href="#">Baths: 2</a></li>
-											<li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-										</ul>
-									</div>
-									<div class="fp_footer">
-										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-											<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-										</ul>
-										<div class="fp_pdate float-right">4 years ago</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Property Cities -->
-	<section id="property-city" class="property-city pb30">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="main-title text-center">
-						<h2>Find Properties in These Cities</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-xl-4">
-					<div class="properti_city">
-						<div class="thumb"><img class="img-fluid w100" src="{{ URL::asset('assets/images/property/pc1.jpg') }}" alt="pc1.jpg"></div>
-						<div class="overlay">
-							<div class="details">
-								<h4>Miami</h4>
-								<p>24 Properties</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8 col-xl-8">
-					<div class="properti_city">
-						<div class="thumb"><img class="img-fluid w100" src="{{ URL::asset('assets/images/property/pc2.jpg') }}" alt="pc2.jpg"></div>
-						<div class="overlay">
-							<div class="details">
-								<h4>Los Angeles</h4>
-								<p>18 Properties</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8 col-xl-8">
-					<div class="properti_city">
-						<div class="thumb"><img class="img-fluid w100" src="{{ URL::asset('assets/images/property/pc3.jpg') }}" alt="pc3.jpg"></div>
-						<div class="overlay">
-							<div class="details">
-								<h4>New York</h4>
-								<p>89 Properties</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-xl-4">
-					<div class="properti_city">
-						<div class="thumb"><img class="img-fluid w100" src="{{ URL::asset('assets/images/property/pc4.jpg') }}" alt="pc4.jpg"></div>
-						<div class="overlay">
-							<div class="details">
-								<h4>Florida</h4>
-								<p>47 Properties</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Why Chose Us -->
-	<section id="why-chose" class="whychose_us bgc-f7 pb30">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="main-title text-center">
-						<h2>Why Choose Us</h2>
-						<p>We provide full service at every step.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="why_chose_us">
-						<div class="icon">
-							<span class="flaticon-high-five"></span>
-						</div>
-						<div class="details">
-							<h4>Trusted By Thousands</h4>
-							<p>Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="why_chose_us">
-						<div class="icon">
-							<span class="flaticon-home-1"></span>
-						</div>
-						<div class="details">
-							<h4>Wide Renge Of Properties</h4>
-							<p>Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="why_chose_us">
-						<div class="icon">
-							<span class="flaticon-profit"></span>
-						</div>
-						<div class="details">
-							<h4>Financing Made Easy</h4>
-							<p>Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Our Testimonials -->
-	<section id="our-testimonials" class="our-testimonial">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="main-title text-center">
-						<h2 class="color-white">Testimonials</h2>
-						<p class="color-white">Here could be a nice sub title</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="testimonial_grid_slider">
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="{{ URL::asset('assets/images/testimonial/1.jpg') }}" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="{{ URL::asset('assets/images/testimonial/1.jpg') }}" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="{{ URL::asset('assets/images/testimonial/1.jpg') }}" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="{{ URL::asset('assets/images/testimonial/1.jpg') }}" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial_grid">
-								<div class="thumb">
-									<img src="{{ URL::asset('assets/images/testimonial/1.jpg') }}" alt="1.jpg">
-								</div>
-								<div class="details">
-									<h4>Augusta Silva</h4>
-									<p>Sales Manager</p>
-									<p class="mt25">Aliquam dictum elit vitae mauris facilisis at dictum urna dignissim donec vel lectus vel felis.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Our Blog -->
-	<section class="our-blog bgc-f7 pb30">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="main-title text-center">
-						<h2>Articles & Tips</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="for_blog feat_property">
-						<div class="thumb">
-							<img class="img-whp" src="{{ URL::asset('assets/images/blog/bh1.jpg') }}" alt="bh1.jpg">
-						</div>
-						<div class="details">
-							<div class="tc_content">
-								<p class="text-thm">Business</p>
-								<h4>Skills That You Can Learn In The Real Estate Market</h4>
-							</div>
-							<div class="fp_footer">
-								<ul class="fp_meta float-left mb0">
-									<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-									<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-								</ul>
-								<a class="fp_pdate float-right" href="#">7 August 2019</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="for_blog feat_property">
-						<div class="thumb">
-							<img class="img-whp" src="{{ URL::asset('assets/images/blog/bh2.jpg') }}" alt="bh2.jpg">
-						</div>
-						<div class="details">
-							<div class="tc_content">
-								<p class="text-thm">Business</p>
-								<h4>Bedroom Colors You’ll Never <br class="dn-1199"> Regret</h4>
-							</div>
-							<div class="fp_footer">
-								<ul class="fp_meta float-left mb0">
-									<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-									<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-								</ul>
-								<a class="fp_pdate float-right" href="#">7 August 2019</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 col-xl-4">
-					<div class="for_blog feat_property">
-						<div class="thumb">
-							<img class="img-whp" src="{{ URL::asset('assets/images/blog/bh3.jpg') }}" alt="bh3.jpg">
-						</div>
-						<div class="details">
-							<div class="tc_content">
-								<p class="text-thm">Business</p>
-								<h4>5 Essential Steps for Buying an Investment</h4>
-							</div>
-							<div class="fp_footer">
-								<ul class="fp_meta float-left mb0">
-									<li class="list-inline-item"><a href="#"><img src="{{ URL::asset('assets/images/property/pposter1.png') }}" alt="pposter1.png"></a></li>
-									<li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-								</ul>
-								<a class="fp_pdate float-right" href="#">7 August 2019</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Our Partners -->
-	<section id="our-partners" class="our-partners">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<div class="main-title text-center">
-						<h2>Our Partners</h2>
-						<p>We only work with the best companies around the globe</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="{{ URL::asset('assets/images/partners/1.png') }}" alt="1.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="{{ URL::asset('assets/images/partners/2.png') }}" alt="2.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="{{ URL::asset('assets/images/partners/3.png') }}" alt="3.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="{{ URL::asset('assets/images/partners/4.png') }}" alt="4.png">
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg">
-					<div class="our_partner">
-						<img class="img-fluid" src="{{ URL::asset('assets/images/partners/5.png') }}" alt="5.png">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Start Partners -->
-	<section class="start-partners bgc-thm pt50 pb50">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="start_partner tac-smd">
-						<h2>Become a Real Estate Agent</h2>
-						<p>We only work with the best companies around the globe</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="parner_reg_btn text-right tac-smd">
-						<a class="btn btn-thm2" href="#">Register Now</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-@endsection
+    <!-- Page Content -->
+    <div id="page-content">
+        <section id="banner">
+            <div class="block has-dark-background background-color-default-darker center text-banner">
+                <div class="container">
+                    <h1 class="no-bottom-margin no-border">Zoner Is Fully Loaded Real Estate Template with <a href="#" class="text-underline">Tons of Features</a>!</h1>
+                </div>
+            </div>
+        </section><!-- /#banner -->
+        <section id="our-services" class="block">
+            <div class="container">
+                <header class="section-title"><h2>Our Services</h2></header>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="feature-box equal-height">
+                            <figure class="icon"><i class="fa fa-folder"></i></figure>
+                            <aside class="description">
+                                <header><h3>Wide Range of Properties</h3></header>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                <a href="properties-listing.html" class="link-arrow">Read More</a>
+                            </aside>
+                        </div><!-- /.feature-box -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="feature-box equal-height">
+                            <figure class="icon"><i class="fa fa-users"></i></figure>
+                            <aside class="description">
+                                <header><h3>14 Agents for Your Service</h3></header>
+                                <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
+                                <a href="agents-listing.html" class="link-arrow">Read More</a>
+                            </aside>
+                        </div><!-- /.feature-box -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="feature-box equal-height">
+                            <figure class="icon"><i class="fa fa-money"></i></figure>
+                            <aside class="description">
+                                <header><h3>Best Price Guarantee!</h3></header>
+                                <p>Phasellus non viverra tortor, id auctor leo. Suspendisse id nibh placerat</p>
+                                <a href="#" class="link-arrow">Read More</a>
+                            </aside>
+                        </div><!-- /.feature-box -->
+                    </div><!-- /.col-md-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /#our-services -->
+        <section id="price-drop" class="block">
+            <div class="container">
+                <header class="section-title">
+                    <h2>Price Drop</h2>
+                    <a href="properties-listing.html" class="link-arrow">All Properties</a>
+                </header>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-06.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 11,000</div>
+                                        <h3>3398 Lodgeville Road</h3>
+                                        <figure>Golden Valley, MN 55427</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>2</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>2</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>0</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-04.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 38,000</div>
+                                        <h3>2186 Rinehart Road</h3>
+                                        <figure>Doral, FL 33178 </figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-07.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 325,000</div>
+                                        <h3>3705 Brighton Circle Road</h3>
+                                        <figure>Glenwood, MN 56334</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-08.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 16,000</div>
+                                        <h3>362 Lynn Ogden Lane</h3>
+                                        <figure>Galveston, TX 77550</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                </div><!-- /.row-->
+            </div><!-- /.container -->
+        </section><!-- /#price-drop -->
+        <aside id="advertising" class="block">
+            <div class="container">
+                <a href="submit.html">
+                    <div class="banner">
+                        <div class="wrapper">
+                            <span class="title">Do you want your property to be listed here?</span>
+                            <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
+                        </div>
+                    </div><!-- /.banner-->
+                </a>
+            </div>
+        </aside><!-- /#adveritsing-->
+        <section id="new-properties" class="block">
+            <div class="container">
+                <header class="section-title">
+                    <h2>New Properties for You</h2>
+                    <a href="properties-listing.html" class="link-arrow">All Properties</a>
+                </header>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-09.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 11,000</div>
+                                        <h3>3398 Lodgeville Road</h3>
+                                        <figure>Golden Valley, MN 55427</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>2</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>2</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>0</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-03.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 38,000</div>
+                                        <h3>2186 Rinehart Road</h3>
+                                        <figure>Doral, FL 33178 </figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-06.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 325,000</div>
+                                        <h3>3705 Brighton Circle Road</h3>
+                                        <figure>Glenwood, MN 56334</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-01.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 16,000</div>
+                                        <h3>362 Lynn Ogden Lane</h3>
+                                        <figure>Galveston, TX 77550</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                </div><!-- /.row-->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-02.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 18,000</div>
+                                        <h3>2506 B Street</h3>
+                                        <figure>New Brighton, MN 55112</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>280m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>2</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-12.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 136,000</div>
+                                        <h3>3990 Late Avenue</h3>
+                                        <figure>Kingfisher, OK 73750</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>30m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>0</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-05.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 12,680</div>
+                                        <h3>297 Marie Street</h3>
+                                        <figure>Towson, MD 21204 </figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="property">
+                            <a href="property-detail.html">
+                                <div class="property-image">
+                                    <img alt="" src="assets/img/properties/property-10.jpg">
+                                </div>
+                                <div class="overlay">
+                                    <div class="info">
+                                        <div class="tag price">$ 12,800</div>
+                                        <h3>64 Timberbrook Lane</h3>
+                                        <figure>Denver, CO 80202</figure>
+                                    </div>
+                                    <ul class="additional-info">
+                                        <li>
+                                            <header>Area:</header>
+                                            <figure>240m<sup>2</sup></figure>
+                                        </li>
+                                        <li>
+                                            <header>Beds:</header>
+                                            <figure>3</figure>
+                                        </li>
+                                        <li>
+                                            <header>Baths:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                        <li>
+                                            <header>Garages:</header>
+                                            <figure>1</figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div><!-- /.property -->
+                    </div><!-- /.col-md-3 -->
+                </div><!-- /.row-->
+            </div><!-- /.container-->
+        </section><!-- /#new-properties-->
+        <section id="testimonials" class="block">
+            <div class="container">
+                <header class="section-title"><h2>Testimonials</h2></header>
+                <div class="owl-carousel testimonials-carousel">
+                    <blockquote class="testimonial">
+                        <figure>
+                            <div class="image">
+                                <img alt="" src="{{ URL::asset('assets/img/client-01.jpg') }}">
+                            </div>
+                        </figure>
+                        <aside class="cite">
+                            <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
+                            <footer>Natalie Jenkins</footer>
+                        </aside>
+                    </blockquote>
+                    <blockquote class="testimonial">
+                        <figure>
+                            <div class="image">
+                                <img alt="" src="assets/img/client-01.jpg">
+                            </div>
+                        </figure>
+                        <aside class="cite">
+                            <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
+                            <footer>Natalie Jenkins</footer>
+                        </aside>
+                    </blockquote>
+                </div><!-- /.testimonials-carousel -->
+            </div><!-- /.container -->
+        </section><!-- /#testimonials -->
+        <section id="partners" class="block">
+            <div class="container">
+                <header class="section-title"><h2>Our Partners</h2></header>
+                <div class="logos">
+                    <div class="logo"><a href=""><img src="assets/img/logo-partner-01.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="assets/img/logo-partner-02.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="assets/img/logo-partner-03.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="assets/img/logo-partner-04.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="assets/img/logo-partner-05.png" alt=""></a></div>
+                </div>
+            </div><!-- /.container -->
+        </section><!-- /#partners -->
+    </div>
+    <!-- end Page Content -->
+ @endsection
 
 @section('script')
 <script>
-    console.log('test');
+        $(window).load(function(){
+        initializeOwl(false);
+    });
 </script>
 @endsection
