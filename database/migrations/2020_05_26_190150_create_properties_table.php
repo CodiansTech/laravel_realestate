@@ -26,6 +26,7 @@ class CreatePropertiesTable extends Migration
             $table->double('long', 11, 8);
             $table->string('zip');
             $table->boolean('status');
+            $table->integer('propertytype_id');
             $table->timestamps();
         });
     }
