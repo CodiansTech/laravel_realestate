@@ -2,8 +2,8 @@
         <div class="secondary-navigation">
             <div class="container">
                 <div class="contact">
-                    <figure><strong>Phone:</strong>+1 810-991-3842</figure>
-                    <figure><strong>Email:</strong>zoner@example.com</figure>
+                    <figure><strong>Phone:</strong>+44 123 123 123</figure>
+                    <figure><strong>Email:</strong>info@email.com</figure>
                 </div>
                 <div class="user-area">
                     <div class="actions">
@@ -91,7 +91,7 @@
                             </ul>
                         </li>
                         @endif
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{route('contact.index')}}">Contact</a></li>
                     </ul>
                 </nav><!-- /.navbar collapse-->
                 @if(Auth::user())

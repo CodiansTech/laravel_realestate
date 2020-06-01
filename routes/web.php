@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('pages.index');
 })->name('index');
 
+Route::get('contact', 'PageController@contact')->name('contact.index');
 
 Route::get('list', 'PropertyController@listProperties')->name('listproperties');
 Route::get('list/{id}', 'PropertyController@show')->name('showProperty');

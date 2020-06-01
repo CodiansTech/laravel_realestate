@@ -1,115 +1,89 @@
 @extends('layouts.main')
 
-@section('title', 'Homepage')
-
-@section('head')
-<style>
-
-</style>
-@endsection
+@section('title', 'Contact Us')
 
 @section('content')
-    <!-- Page Content -->
-    <div id="page-content">
+
+<div id="page-content">
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">Property Listing</li>
+                <li class="active">Contact</li>
             </ol>
         </div>
         <!-- end Breadcrumb -->
 
         <div class="container">
             <div class="row">
-                <!-- Results -->
+                <!-- Contact -->
                 <div class="col-md-9 col-sm-9">
-                    <section id="results">
-                        <header><h1>Properties Listing</h1></header>
-                        <section id="search-filter">
-                            <figure><h3><i class="fa fa-search"></i>Search Results:</h3>
-                                <span class="search-count">28</span>
-                                <div class="sorting">
-                                    <div class="form-group">
-                                        <select name="sorting">
-                                            <option value="">Sort By</option>
-                                            <option value="1">Lowest price first</option>
-                                            <option value="2">Highest price first</option>
-                                            <option value="3">Date added</option>
-                                        </select>
-                                    </div><!-- /.form-group -->
-                                </div>
-                            </figure>
-                        </section>
-                        <section id="properties">
-                        @foreach($properties->chunk(3) as $items)
+                    <section id="agent-detail">
+                        <header><h1>Contact Us</h1></header>
+                        <section id="contact-information">
                             <div class="row">
-                            @foreach($items as $property)
-                            <div class="col-md-4 col-sm-4">
-                                <div class="property equal-height">
-                                    <figure class="tag status">For {{$property->getStatus()}}</figure>
-                                    <figure class="type" title="Apartment"><img src="assets/img/property-types/apartment.png" alt=""></figure>
-                                    <a href="{{route('showProperty', $property->id)}}">
-                                        <div class="property-image">
-                                            <img alt="" src="assets/img/properties/property-09.jpg">
+                                <div class="col-md-4 col-sm-5">
+                                    <section id="address">
+                                        <header><h3>Address</h3></header>
+                                        <address>
+                                            <strong>Your Company</strong><br>
+                                            4877 Spruce Drive<br>
+                                            West Newton, PA 15089
+                                        </address>
+                                        +1 (734) 123-4567<br>
+                                        <a href="#">hello@example.com</a><br>
+                                        <strong>skype: </strong>your.company
+                                    </section><!-- /#address -->
+                                    <section id="social">
+                                        <header><h3>Social Profiles</h3></header>
+                                        <div class="agent-social">
+                                            <a href="#" class="fa fa-twitter btn btn-grey-dark"></a>
+                                            <a href="#" class="fa fa-facebook btn btn-grey-dark"></a>
+                                            <a href="#" class="fa fa-linkedin btn btn-grey-dark"></a>
                                         </div>
-                                        <div class="overlay">
-                                            <div class="info">
-                                                <div class="tag price">$ {{number_format($property->price)}}</div>
-                                                <h3>{{$property->address}}</h3>
-                                                <figure>{{$property->city}}, {{$property->zip}}</figure>
-                                            </div>
-                                            <ul class="additional-info">
-                                                <li>
-                                                    <header>Area:</header>
-                                                    <figure>{{$property->area}}m<sup>2</sup></figure>
-                                                </li>
-                                                <li>
-                                                    <header>Beds:</header>
-                                                    <figure>2</figure>
-                                                </li>
-                                                <li>
-                                                    <header>Baths:</header>
-                                                    <figure>2</figure>
-                                                </li>
-                                                <li>
-                                                    <header>Garages:</header>
-                                                    <figure>0</figure>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </a>
-                                </div><!-- /.property -->
-                            </div><!-- /.col-md-3 -->
-                        
-                            @endforeach
-                            @if ($loop->iteration % 3 == 0)
-                            <div class="col-md-12 col-sm-12">
-                            <section id="advertising">
-                                <a href="submit.html">
-                                    <div class="banner">
-                                        <div class="wrapper">
-                                            <span class="title">Do you want your property to be listed here?</span>
-                                            <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
-                                        </div>
-                                    </div><!-- /.banner-->
-                                </a>
-                            </section><!-- /#adveritsing-->
-                            </div>
-                            @endif
-                            </div>
-                            @endforeach
-                        
-                      
-                        <!-- Pagination -->
-                        <div class="center">
-                            {{$properties->render()}}
-                        </div><!-- /.center-->
-
-                        </section><!-- /#properties-->
-                    </section><!-- /#results -->
+                                    </section><!-- /#social -->
+                                </div><!-- /.col-md-4 -->
+                                <div class="col-md-8 col-sm-7">
+                                    <header><h3>Where We Are</h3></header>
+                                    <div id="contact-map"></div>
+                                </div><!-- /.col-md-8 -->
+                            </div><!-- /.row -->
+                        </section><!-- /#agent-info -->
+                        <hr class="thick">
+                        <section id="form">
+                            <header><h3>Send Us a Message</h3></header>
+                            <form role="form" id="form-contact" method="post"  class="clearfix">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-name">Your Name<em>*</em></label>
+                                            <input type="text" class="form-control" id="form-contact-name" name="form-contact-name" required>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-6 -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-email">Your Email<em>*</em></label>
+                                            <input type="email" class="form-control" id="form-contact-email" name="form-contact-email" required>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-6 -->
+                                </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form-contact-message">Your Message<em>*</em></label>
+                                            <textarea class="form-control" id="form-contact-message" rows="8" name="form-contact-message" required></textarea>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-12 -->
+                                </div><!-- /.row -->
+                                <div class="form-group clearfix">
+                                    <button type="submit" class="btn pull-right btn-default" id="form-contact-submit">Send a Message</button>
+                                </div><!-- /.form-group -->
+                                <div id="form-status"></div>
+                            </form><!-- /#form-contact -->
+                        </section>
+                    </section><!-- /#agent-detail -->
                 </div><!-- /.col-md-9 -->
-                <!-- end Results -->
+                <!-- end Contact -->
 
                 <!-- sidebar -->
                 <div class="col-md-3 col-sm-3">
@@ -233,10 +207,5 @@
         </div><!-- /.container -->
     </div>
     <!-- end Page Content -->
-@endsection
 
-@section('script')
-<script type="text/javascript">
-
-</script>
-@endsection
+    @endsection
