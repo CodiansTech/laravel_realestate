@@ -207,7 +207,7 @@
                                     <ul class="additional-info">
                                         <li>
                                             <header>Area:</header>
-                                            <figure>240m<sup>2</sup></figure>
+                                            <figure>{{$property->area}}m<sup>2</sup></figure>
                                         </li>
                                         <li>
                                             <header>Beds:</header>
@@ -267,7 +267,7 @@
                                     <ul class="additional-info">
                                         <li>
                                             <header>Area:</header>
-                                            <figure>240m<sup>2</sup></figure>
+                                            <figure>{{$property->area}}m<sup>2</sup></figure>
                                         </li>
                                         <li>
                                             <header>Beds:</header>
