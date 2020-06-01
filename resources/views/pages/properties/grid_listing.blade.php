@@ -28,7 +28,7 @@
                         <header><h1>Properties Listing</h1></header>
                         <section id="search-filter">
                             <figure><h3><i class="fa fa-search"></i>Search Results:</h3>
-                                <span class="search-count">28</span>
+                                <span class="search-count">{{$properties->count()}}</span>
                                 <div class="sorting">
                                     <div class="form-group">
                                         <select name="sorting">

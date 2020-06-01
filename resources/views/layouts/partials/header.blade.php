@@ -57,7 +57,7 @@
                             </ul>
                         </li>
                         @endif
-                        <li><a href="{{route('contact.index')}}">Contact</a></li>
+                        <li class="{{ (request()->is('contact')) ? 'active' : '' }}"><a href="{{route('contact.index')}}">Contact</a></li>
                     </ul>
                 </nav><!-- /.navbar collapse-->
                 @if(Auth::user())

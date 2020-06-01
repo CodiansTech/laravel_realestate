@@ -25,7 +25,7 @@
                         <a href="property-detail.html" class="link-arrow">Read More</a>
                     </div>
                 </div>
-                <img alt="" src="assets/img/slide-01.jpg">
+                <img alt="" src="{{URL::asset('assets/img/slide-01.jpg')}}">
             </div>
             <div class="slide">
                 <div class="container">
@@ -143,7 +143,7 @@
         <section id="banner">
             <div class="block has-dark-background background-color-default-darker center text-banner">
                 <div class="container">
-                    <h1 class="no-bottom-margin no-border">Zoner Is Fully Loaded Real Estate Template with <a href="#" class="text-underline">Tons of Features</a>!</h1>
+                    <h1 class="no-bottom-margin no-border"><a href="#" class=""><i class="fa fa-user"></i></a>!</h1>
                 </div>
             </div>
         </section><!-- /#banner -->
@@ -188,7 +188,7 @@
             <div class="container">
                 <header class="section-title">
                     <h2>Price Drop</h2>
-                    <a href="properties-listing.html" class="link-arrow">All Properties</a>
+                    <a href="{{route('listproperties')}}" class="link-arrow">All Properties</a>
                 </header>
                 <div class="row">
                 @foreach($pricedrop as $property)
@@ -246,7 +246,7 @@
             <div class="container">
                 <header class="section-title">
                     <h2>New Properties for You</h2>
-                    <a href="properties-listing.html" class="link-arrow">All Properties</a>
+                    <a href="{{route('listproperties')}}" class="link-arrow">All Properties</a>
                 </header>
                 
                 @foreach($properties->chunk(4) as $items)
@@ -312,7 +312,7 @@
                     <blockquote class="testimonial">
                         <figure>
                             <div class="image">
-                                <img alt="" src="assets/img/client-01.jpg">
+                                <img alt="" src="{{URL::asset('assets/img/client-01.jpg')}}">
                             </div>
                         </figure>
                         <aside class="cite">
@@ -327,11 +327,11 @@
             <div class="container">
                 <header class="section-title"><h2>Our Partners</h2></header>
                 <div class="logos">
-                    <div class="logo"><a href=""><img src="assets/img/logo-partner-01.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="assets/img/logo-partner-02.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="assets/img/logo-partner-03.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="assets/img/logo-partner-04.png" alt=""></a></div>
-                    <div class="logo"><a href=""><img src="assets/img/logo-partner-05.png" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="{{URL::asset('assets/img/logo-partner-01.png')}}" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="{{URL::asset('assets/img/logo-partner-02.png')}}" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="{{URL::asset('assets/img/logo-partner-03.png')}}" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="{{URL::asset('assets/img/logo-partner-04.png')}}" alt=""></a></div>
+                    <div class="logo"><a href=""><img src="{{URL::asset('assets/img/logo-partner-05.png')}}" alt=""></a></div>
                 </div>
             </div><!-- /.container -->
         </section><!-- /#partners -->

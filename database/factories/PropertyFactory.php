@@ -19,5 +19,6 @@ $factory->define(Property::class, function (Faker $faker) {
         'long' => rand(1,2),
         'zip' => rand(5,100),
         'status' => rand(0,1),
+        'propertytype_id' => rand(1,3),
     ];
 });
