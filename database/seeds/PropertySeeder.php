@@ -14,10 +14,8 @@ class PropertySeeder extends Seeder
     public function run()
     {
         
-        for($i = 1 ; $i <= 50 ; $i++){
            
             $user = factory(App\Property::class, 50)->create();
-        }
             
     }
 }

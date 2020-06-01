@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-})->name('index');
+Route::get('/', 'PageController@index')->name('index');
 
 Route::get('contact', 'PageController@contact')->name('contact.index');
 
