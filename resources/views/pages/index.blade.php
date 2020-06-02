@@ -68,12 +68,9 @@
                             <div class="col-md-2 col-sm-4">
                                 <div class="form-group">
                                     <select name="form-sale-country">
-                                        <option value="">Country</option>
-                                        <option value="1">France</option>
-                                        <option value="2">Great Britain</option>
-                                        <option value="3">Spain</option>
-                                        <option value="4">Russia</option>
-                                        <option value="5">United States</option>
+                                        <option value="1">Buy</option>
+                                        <option value="2">Long Let</option>
+                                        <option value="3">Short Let</option>
                                     </select>
                                 </div><!-- /.form-group -->
                             </div>
@@ -140,13 +137,7 @@
 
     <!-- Page Content -->
     <div id="page-content">
-        <section id="banner">
-            <div class="block has-dark-background background-color-default-darker center text-banner">
-                <div class="container">
-                    <h1 class="no-bottom-margin no-border"><a href="#" class=""><i class="fa fa-user"></i></a>!</h1>
-                </div>
-            </div>
-        </section><!-- /#banner -->
+       
         <section id="our-services" class="block">
             <div class="container">
                 <header class="section-title"><h2>Our Services</h2></header>
@@ -294,35 +285,7 @@
                 
             </div><!-- /.container-->
         </section><!-- /#new-properties-->
-        <section id="testimonials" class="block">
-            <div class="container">
-                <header class="section-title"><h2>Testimonials</h2></header>
-                <div class="owl-carousel testimonials-carousel">
-                    <blockquote class="testimonial">
-                        <figure>
-                            <div class="image">
-                                <img alt="" src="{{ URL::asset('assets/img/client-01.jpg') }}">
-                            </div>
-                        </figure>
-                        <aside class="cite">
-                            <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
-                            <footer>Natalie Jenkins</footer>
-                        </aside>
-                    </blockquote>
-                    <blockquote class="testimonial">
-                        <figure>
-                            <div class="image">
-                                <img alt="" src="{{URL::asset('assets/img/client-01.jpg')}}">
-                            </div>
-                        </figure>
-                        <aside class="cite">
-                            <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
-                            <footer>Natalie Jenkins</footer>
-                        </aside>
-                    </blockquote>
-                </div><!-- /.testimonials-carousel -->
-            </div><!-- /.container -->
-        </section><!-- /#testimonials -->
+       
         <section id="partners" class="block">
             <div class="container">
                 <header class="section-title"><h2>Our Partners</h2></header>
