@@ -12,6 +12,10 @@ class Property extends Model
         return $this->hasMany('App\Image');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
     public function propertytype(){
         return $this->belongsTo('App\PropertyType');
     }
@@ -20,6 +24,12 @@ class Property extends Model
         if($this->status == 0)
             return 'Sale';
         return 'Rent';
+    }
+
+    public function isApproved(){
+        if($this->approved)
+            return true;
+        return false;
     }
 
 }

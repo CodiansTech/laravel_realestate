@@ -37,8 +37,11 @@ Route::group(['middleware' => ['permission:manage-users']], function () {
 
 Route::group(['middleware' => ['permission:manage-properties']], function () {
     Route::get('account/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
+    Route::get('account/myproperties', 'PropertyController@myproperties')->name('admin.properties.myproperties');
     Route::get('account/properties/create', 'PropertyController@create')->name('admin.properties.create');
     Route::post('account/properties/store', 'PropertyController@store')->name('admin.properties.store');
     Route::get('account/properties/{id}/edit', 'PropertyController@edit')->name('admin.properties.edit');
     Route::post('account/properties/{id}/update', 'PropertyController@update')->name('admin.properties.update');
+    Route::get('account/approveproperties', 'PropertyController@approveproperties')->name('admin.properties.approve');
+    Route::get('account/approveproperty/{id}', 'PropertyController@approveproperty')->name('admin.properties.approveproperty');
 });

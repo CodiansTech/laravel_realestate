@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'All Properties')
+@section('title', 'Approve Properties')
 
 @section('content')
 
@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Account</a></li>
-                <li class="active">All Properties</li>
+                <li class="active">Approve Properties</li>
             </ol>
         </div>
         <!-- end Breadcrumb -->
@@ -22,10 +22,10 @@
                 @include('layouts.partials.aside')
             </div><!-- /.col-md-3 -->
             <!-- end Sidebar -->
-                <!-- All Properties -->
+                <!-- My Properties -->
                 <div class="col-md-9 col-sm-10">
                     <section id="my-properties">
-                        <header><h1>All Properties</h1></header>
+                        <header><h1>Approve Properties</h1></header>
                         <div class="my-properties">
                             <div class="table-responsive">
                                 <table class="table">
@@ -34,7 +34,7 @@
                                         <th>Property</th>
                                         <th></th>
                                         <th>Date Added</th>
-                                        <th>User</th>
+                                        <th>Views</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -57,9 +57,9 @@
                                         </div>
                                         </td>
                                         <td>{{$property->created_at->format('d M Y')}}</td>
-                                        <td><label class="label label-info">{{$property->user->getName()}}</label></td>
+                                        <td>236</td>
                                         <td class="actions">
-                                            <a href="{{route('admin.properties.edit', $property->id)}}" class="edit"><i class="fa fa-pencil"></i>Edit</a>
+                                            <a href="{{route('admin.properties.approveproperty', $property->id)}}" class="edit"><i class="fa fa-check"></i>Approve</a>
                                             <a href="#"><i class="delete fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
@@ -75,7 +75,7 @@
                         </div><!-- /.my-properties -->
                     </section><!-- /#my-properties -->
                 </div><!-- /.col-md-9 -->
-                <!-- end All Properties -->
+                <!-- end My Properties -->
             </div><!-- /.row -->
         </div><!-- /.container -->
     </div>

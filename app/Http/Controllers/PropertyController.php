@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Property;
 use App\Image;
+use Auth;
 use Session;
 
 class PropertyController extends Controller
 {
     
     public function adminIndex(){
-        $user = factory(Property::class)->make();
+
         $properties = Property::orderBy('id', 'desc')->paginate(10);
         return view('admin.pages.properties.index')->withProperties($properties);
+    }
+
+    public function myproperties(){
+        $auth = Auth::user();
+
+        $properties = Property::where('user_id', $auth->id)->orderBy('id', 'desc')->paginate(10);
+        return view('admin.pages.properties.myproperties')->withProperties($properties);
     }
 
     public function listProperties(){
@@ -36,6 +44,8 @@ class PropertyController extends Controller
             'city' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
         ]);
+
+        $user = Auth::user();
         $property = new Property();
         $property->title = $request->title;
         $property->description = $request->description;
@@ -48,6 +58,12 @@ class PropertyController extends Controller
         $property->long = $request->longitude;
         $property->lat = $request->latitude;
         $property->status = $request->status;
+        if($user->isAdmin() || $user->isAgent()){
+            $property->approved = true;
+        }
+        else{
+            $property->approved = false;
+        }
         $property->save();
 
         if($request->hasfile('filename'))
@@ -122,5 +138,18 @@ class PropertyController extends Controller
     public function show($id){
         $property = Property::findOrFail($id);
         return view('pages.properties.property_details')->withProperty($property);
+    }
+
+    public function approveproperties(){
+        $properties = Property::where('approved', false)->orderBy('id', 'desc')->paginate(10);
+        return view('admin.pages.properties.approved')->withProperties($properties);
+    }
+
+    public function approveproperty($id){
+        $property = Property::findOrFail($id);
+        $property->approved = true;
+        $property->update();
+
+        return redirect()->back();
     }
 }

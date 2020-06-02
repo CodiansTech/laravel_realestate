@@ -23,6 +23,5 @@ class PropertyTypeSeed extends Seeder
         $type->name = 'Land';
         $type->save();
 
-       
     }
 }

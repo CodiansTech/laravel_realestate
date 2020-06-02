@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="overlay">
                                             <div class="info">
-                                                <div class="tag price">$ {{number_format($property->price)}}</div>
+                                                <div class="tag price">&pound; {{number_format($property->price)}}</div>
                                                 <h3>{{$property->address}}</h3>
                                                 <figure>{{$property->city}}, {{$property->zip}}</figure>
                                             </div>

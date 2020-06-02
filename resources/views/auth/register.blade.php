@@ -18,9 +18,10 @@
             <header><h1>Create an Account</h1></header>
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                    <h3>Account Type</h3>
 					<form method="POST" id="form-create-account" action="{{ route('register') }}">
                         @csrf
+                    <!-- 
+                        <h3>Account Type</h3>
                         <div class="radio" id="create-account-user">
                             <label>
                                 <input type="radio" id="account-type-user" name="account-type" required>Regular User
@@ -42,9 +43,9 @@
                                     <option value="4">Edd's Homes</option>
                                     <option value="5">Will & Scotch</option>
                                 </select>
-                            </div><!-- /.form-group -->
-                        </div>
-                        <hr>
+                            </div> /.form-group 
+                        </div> 
+                        <hr> -->
                         <div class="form-group">
                             <label for="form-create-account-full-name">Full Name:</label>
 							<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="form-create-account-full-name" placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>

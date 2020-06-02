@@ -38,6 +38,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function properties(){
+        return $this->hasMany('App\Property');
+    }
 
     public function getName(){
         return $this->name;
@@ -45,6 +48,12 @@ class User extends Authenticatable
     
     public function isAdmin(){
         if($this->hasRole('admin'))
+            return true;
+        return false;
+    }
+
+    public function isAgent(){
+        if($this->hasRole('agent'))
             return true;
         return false;
     }

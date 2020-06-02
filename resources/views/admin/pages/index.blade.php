@@ -20,16 +20,7 @@
             <div class="row">
             <!-- sidebar -->
             <div class="col-md-3 col-sm-2">
-                <section id="sidebar">
-                    <header><h3>Account1</h3></header>
-                    <aside>
-                        <ul class="sidebar-navigation">
-                            <li class="active"><a href="{{route('admin')}}"><i class="fa fa-user"></i><span>Profile</span></a></li>
-                            <li><a href="{{route('admin.properties.index')}}"><i class="fa fa-home"></i><span>My Properties</span></a></li>
-                            <li><a href="bookmarked.html"><i class="fa fa-heart"></i><span>Bookmarked Properties</span></a></li>
-                        </ul>
-                    </aside>
-                </section><!-- /#sidebar -->
+                @include('layouts.partials.aside')
             </div><!-- /.col-md-3 -->
             <!-- end Sidebar -->
                 <!-- My Properties -->

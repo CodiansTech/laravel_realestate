@@ -92,7 +92,7 @@
                                         <dt>Location</dt>
                                             <dd>Chicago, IL 60610</dd>
                                         <dt>Price</dt>
-                                            <dd><span class="tag price">${{number_format($property->price)}}</span></dd>
+                                            <dd><span class="tag price">&pound; {{number_format($property->price)}}</span></dd>
                                         <dt>Property Type:</dt>
                                             <dd>House</dd>
                                         <dt>Status:</dt>
@@ -269,7 +269,7 @@
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">
-                                                            <div class="tag price">$ 11,000</div>
+                                                            <div class="tag price">&pound; 11,000</div>
                                                             <h3>3398 Lodgeville Road</h3>
                                                             <figure>Golden Valley, MN 55427</figure>
                                                         </div>
@@ -303,7 +303,7 @@
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">
-                                                            <div class="tag price">$ 38,000</div>
+                                                            <div class="tag price">&pound; 38,000</div>
                                                             <h3>2186 Rinehart Road</h3>
                                                             <figure>Doral, FL 33178 </figure>
                                                         </div>
