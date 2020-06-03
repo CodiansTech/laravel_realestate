@@ -2,17 +2,21 @@
 
 @section('title', 'All Properties')
 
-@section('content')
-
-<div id="page-content">
-        <!-- Breadcrumb -->
-        <div class="container">
+@section('breadcrumb')
+  <div class="container">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Account</a></li>
                 <li class="active">All Properties</li>
             </ol>
         </div>
+@endsection
+
+@section('content')
+
+<div id="page-content">
+        <!-- Breadcrumb -->
+      
         <!-- end Breadcrumb -->
 
         <div class="container">

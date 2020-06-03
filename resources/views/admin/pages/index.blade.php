@@ -16,7 +16,6 @@
     </div>
     <!-- end Breadcrumb -->
 
-    @include('layouts.partials.alerts')
     <div class="container">
         <div class="row">
             <!-- sidebar -->

@@ -96,6 +96,7 @@ class UserController extends Controller
             $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
         }
 
+        Session::flash('success', 'User has been updated successfully!');
         return redirect()->route('admin.users.index');
     }
 

@@ -7,6 +7,8 @@
 
 @include('layouts.partials.header')
 
+@yield('breadcrumb')
+@include('layouts.partials.alerts')
 @yield('content')
 
 @include('layouts.partials.footer')

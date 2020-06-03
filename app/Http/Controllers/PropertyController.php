@@ -45,8 +45,14 @@ class PropertyController extends Controller
             'address' => 'required|min:3|max:255',
             'city' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
+            'filename' => 'required|mimes:jpg,jpeg,png',
         ]);
 
+    
+        if($request->longitude == null){
+            Session::flash('error', 'Please select a location on the map!');
+            return redirect()->back();
+        }
         $user = Auth::user();
         $property = new Property();
         $property->title = $request->title;
@@ -103,7 +109,13 @@ class PropertyController extends Controller
             'address' => 'required|min:3|max:255',
             'city' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
+            'long' => 'required'
         ]);
+        $validator->after(function ($validator) {
+            if($this->somethingElseIsInvalid()) {
+                $validator->errors()->add('field', 'Something is wrong with this field!');
+            }
+        });
 
         // dd($request->latitude. ' - '. $request->longitude);
         $property = Property::findOrFail($id);

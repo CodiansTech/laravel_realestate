@@ -35,17 +35,23 @@
 	
 </script>
 @endsection
-@section('content')
-<!-- Page Content -->
-    <div id="page-content">
-        <!-- Breadcrumb -->
-        <div class="container">
+
+@section('breadcrumb')
+
+    <div class="container">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Property</a></li>
                 <li class="active">Edit Property</li>
             </ol>
         </div>
+
+@endsection
+@section('content')
+<!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+       
         <!-- end Breadcrumb -->
 
         <div class="container">
