@@ -57,4 +57,14 @@ class User extends Authenticatable
             return true;
         return false;
     }
+
+    public function getRole(){
+        if($this->hasRole('admin'))
+            return 'Admin';
+        elseif($this->hasRole('agent'))
+             return 'Agent';
+        else 
+            return 'No role';
+        
+    }
 }

@@ -75,16 +75,14 @@
                                         </span>
                                     @enderror     
                         </div><!-- /.form-group -->
+                        
                         <div class="form-group">
-                            <label for="form-create-account-confirm-password">Confirm Password:</label>
-							<input type="password" name="password_confirmation" class="form-control" id="form-create-account-confirm-password" placeholder="Confirm Password" required="">
-                                
+							 @foreach ($roles as $role)
+							<input class="form-create-account-password" type="checkbox" name="roles[]" value="{{ $role->id }}" id="exampleCheck3"@if($user->roles->contains($role)) checked @endif>
+														{{ ucfirst($role->name) }} 
+
+										@endforeach	
                         </div><!-- /.form-group -->
-                        <div class="checkbox pull-left">
-                            <label>
-                                <div class="icheckbox"><input type="checkbox" id="account-type-newsletter" name="account-newsletter" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>Receive Newsletter
-                            </label>
-                        </div>
                         <div class="form-group clearfix">
                             <button type="submit" class="btn pull-right btn-default" id="account-submit">Update</button>
                         </div><!-- /.form-group -->
@@ -97,30 +95,3 @@
         </div><!-- /.container -->
     </div>
 @endsection
-
-								<div class="form-group">
-									<label>Password:</label>
-							    	
-                                    </div>
-
-									<div class='form-group'>
-										<label>Role:</label>
-										<br>
-										@foreach ($roles as $role)
-											<input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->contains($role)) checked @endif>
-												
-												<div class="btn-group">
-													<div class="btn-group">
-														<button type="button" class="btn btn-default btn-xs">
-															{{ ucfirst($role->name) }} </button>
-														
-													</div>
-												</div>
-
-										@endforeach
-									</div>
-								<button type="submit" class="btn btn-log btn-block btn-thm2">Update</button>
-							</form>
-						</div>
-	</div>
-</div>

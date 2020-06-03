@@ -36,6 +36,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
 										<th>Properties</th>
+                                        <th>Role</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -46,6 +47,7 @@
                                         <td>{{$user->getName()}}</td>
 										<td>{{$user->email}}</td>
 										<td>{{$user->properties->count()}}</td>
+                                        <td><label class="btn btn-default"><strong>{{$user->getRole()}}</strong></label></td>
                                         <td class="actions">
                                             <a href="{{route('admin.users.edit', $user->id)}}" class="edit"><i class="fa fa-pencil"></i>Edit</a>
                                         </td>
