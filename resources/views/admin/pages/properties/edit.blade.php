@@ -42,87 +42,20 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">Add your property</li>
+                <li><a href="#">Property</a></li>
+                <li class="active">Edit Property</li>
             </ol>
         </div>
         <!-- end Breadcrumb -->
 
         <div class="container">
-            <header><h1>Add Your Property</h1></header>
-            <div class="row">
+            <header><h1>Edit Property</h1></header>
                 <!-- Submit-->
-                <div class="col-md-9 col-sm-9">
-                    <section id="submit" class="submit">
-                        <section id="select-package">
-                            <div class="table-responsive submit-pricing">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Your Package:</th>
-                                        <th class="title">Free</th>
-                                        <th class="title">Silver</th>
-                                        <th class="title">Gold</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="prices">
-                                        <td></td>
-                                        <td>$0</td>
-                                        <td>$20</td>
-                                        <td>$40</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Property Submit Limit</td>
-                                        <td>1</td>
-                                        <td>20</td>
-                                        <td>Unlimited</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Agent Profiles</td>
-                                        <td>1</td>
-                                        <td>10</td>
-                                        <td>Unlimited</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Agency Profiles</td>
-                                        <td class="not-available"><i class="fa fa-times"></i></td>
-                                        <td>5</td>
-                                        <td>Unlimited</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Featured Properties</td>
-                                        <td class="not-available"><i class="fa fa-times"></i></td>
-                                        <td class="available"><i class="fa fa-check"></i></td>
-                                        <td class="available"><i class="fa fa-check"></i></td>
-                                    </tr>
-                                    <tr class="buttons">
-                                        <td></td>
-                                        <td class="package-selected" data-package="free"><button type="button" class="btn btn-default small">Select</button></td>
-                                        <td data-package="silver"><button type="button" class="btn btn-default small">Select</button></td>
-                                        <td data-package="gold"><button type="button" class="btn btn-default small">Select</button></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div><!-- /.submit-pricing -->
-                        </section><!-- /#select-package -->
-                    </section><!-- /#submit -->
-                </div><!-- /.col-md-9 -->
-                <aside class="col-md-3 col-sm-3">
-                    <div class="submit-step">
-                        <figure class="step-number">1</figure>
-                        <div class="description">
-                            <h4>Select Your Price Package</h4>
-                            <p>Choose from price packages one that suit your need. If you have chosen package before,
-                                it will be automatically selected.
-                            </p>
-                        </div>
-                    </div><!-- /.submit-step -->
-                </aside><!-- /.col-md-3 -->
-            </div><!-- /.row -->
+             
 			
-            <form role="form" id="form-submit" class="form-submit"  method="POST" action="{{ route('admin.properties.store') }} " enctype="multipart/form-data">
-				@csrf
                 <div class="row">
+                    <form role="form" id="form-submit" class="form-submit"  method="POST" action="{{ route('admin.properties.store') }} " enctype="multipart/form-data">
+                        @csrf
                     <div class="block">
                         <div class="col-md-9 col-sm-9">
                             <section id="submit-form">
@@ -139,7 +72,7 @@
                                             <div class="form-group">
                                                 <label for="submit-price">Price</label>
                                                 <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
+                                                    <span class="input-group-addon">&pound;</span>
                                                     <input type="text" class="form-control" id="submit-price" name="price" pattern="\d*" value="{{$property->price}}" required>
                                                 </div>
                                             </div><!-- /.form-group -->
@@ -250,15 +183,7 @@
                                     </div><!-- /.row -->
                                 </section>
 
-                                <section class="block" id="gallery">
-                                    <header><h2>Gallery</h2></header>
-                                    <div class="center">
-                                        <div class="form-group">
-                                            <input id="file-upload" type="file" name="filename[]" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" multiple>
-                                            <figure class="note"><strong>Hint:</strong> You can upload all images at once!</figure>
-                                        </div>
-                                    </div>
-                                </section>
+                               
 
                                 <section id="property-features" class="block">
                                     <section>
@@ -290,7 +215,7 @@
                         </div><!-- /.col-md-9 -->
                         <div class="col-md-3 col-sm-3">
                             <aside class="submit-step">
-                                <figure class="step-number">2</figure>
+                                <figure class="step-number">1</figure>
                                 <div class="description">
                                     <h4>Enter Information About Property</h4>
                                     <p>Type information about your property. Be descriptive.
@@ -305,17 +230,17 @@
                         <div class="col-md-9 col-sm-9">
                             <div class="center">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-default large">Proceed to Payment</button>
+                                    <button type="submit" class="btn btn-default large">Update Property</button>
                                 </div><!-- /.form-group -->
-                                <figure class="note block">By clicking the “Proceed to Payment” or “Submit” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
+                                <figure class="note block">By clicking the “Update Property” button you agree with our <a href="#">Terms and conditions</a></figure>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3">
                             <aside class="submit-step">
-                                <figure class="step-number">3</figure>
+                                <figure class="step-number">2</figure>
                                 <div class="description">
-                                    <h4>Review Information and Proceed to Payment</h4>
-                                    <p>Carefully check entered information and than click button to submit them.
+                                    <h4>Update Your Property</h4>
+                                    <p>Carefully check entered information and than click button to update them.
                                     </p>
                                 </div>
                             </aside><!-- /.submit-step -->

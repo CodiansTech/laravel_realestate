@@ -2572,6 +2572,23 @@ ul.list-links li a:hover {
   top: 15px;
   z-index: 1;
 }
+
+.property .tag.status1 {
+  -moz-transition: 0.4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  right: 13px;
+  font-size: 12px;
+  padding: 6px 9px;
+  position: absolute;
+  top: 15px;
+  z-index: 1;
+}
 .property .tag.status:after {
   bottom: -4px;
   width: 0;

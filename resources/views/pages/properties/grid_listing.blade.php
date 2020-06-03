@@ -51,7 +51,7 @@
                                     <figure class="type" title="Apartment"><img src="assets/img/property-types/apartment.png" alt=""></figure>
                                     <a href="{{route('showProperty', $property->id)}}">
                                         <div class="property-image">
-                                            <img alt="" src="assets/img/properties/property-09.jpg">
+                                            <img alt="" src="{{$property->getFeaturedImageURL()}}">
                                         </div>
                                         <div class="overlay">
                                             <div class="info">

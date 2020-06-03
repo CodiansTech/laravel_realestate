@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Property;
+use App\PropertyType;
 use App\Image;
 use Auth;
 use Session;
@@ -30,7 +31,8 @@ class PropertyController extends Controller
     }
 
     public function create(){
-        return view('admin.pages.properties.create');
+        $types = PropertyType::orderBy('name', 'asc')->get();
+        return view('admin.pages.properties.create')->with('types', $types);
     }
 
     public function store(Request $request){
@@ -56,8 +58,10 @@ class PropertyController extends Controller
         $property->city = $request->city;
         $property->zip = $request->zip;
         $property->long = $request->longitude;
+        $property->propertytype_id = $request->type;
         $property->lat = $request->latitude;
         $property->status = $request->status;
+        $property->user_id = $user->id;
         if($user->isAdmin() || $user->isAgent()){
             $property->approved = true;
         }
@@ -152,4 +156,22 @@ class PropertyController extends Controller
 
         return redirect()->back();
     }
+
+    public function editImages($id){
+        $property = Property::findOrFail($id);
+        return view('admin.pages.properties.editimages')->withProperty($property);
+    }
+    
+
+    public function setFeaturedImage($imageid){
+        $image = Image::findOrFail($imageid);
+        $property = Property::findOrFail($image->property->id);
+
+        $property->featuredimage = $image->id;
+        $property->update();
+
+
+        return redirect()->route('admin.properties.editimages', $property->id);
+    }
+
 }

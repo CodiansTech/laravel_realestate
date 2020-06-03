@@ -32,4 +32,14 @@ class Property extends Model
         return false;
     }
 
+    public function getFeaturedImage(){
+        return $this->featuredimage;
+    }
+
+    public function getFeaturedImageURL(){
+        if($this->featuredimage != null)
+            return 'images/property/'.$this->images()->where('id', $this->featuredimage)->first()->filename;
+        return 'assets/img/properties/property-09.jpg';
+        // return $this->hasOne('App\Image', 'id', $this->featuredimage);
+    }
 }

@@ -42,7 +42,7 @@
 									@foreach($properties as $property)
                                     <tr>
                                         <td class="image">
-                                            <a href="property-detail.html">
+                                            <a href="{{route('showProperty', $property->id)}}">
                                                 @if($property->images->count() == 0)
                                                 <img alt="" src="{{url('assets/img/properties/property-04.jpg')}}">
                                                 @else
@@ -51,7 +51,7 @@
                                             </a>
                                         </td>
                                         <td><div class="inner">
-                                            <a href="property-detail.html"><h2>987 Cantebury Drive</h2></a>
+                                            <a href="{{route('showProperty', $property->id)}}"><h2>987 Cantebury Drive</h2></a>
                                             <figure>{{$property->address}}, {{$property->zip}}</figure>
                                             <div class="tag price">&pound; {{number_format($property->price)}}</div>
                                         </div>
