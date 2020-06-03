@@ -29,6 +29,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('propertytype_id');
             $table->integer('user_id');
             $table->boolean('approved'); // 0 = not approved; 1 = approved
+            $table->integer('featuredimage')->nullable();
             $table->timestamps();
         });
     }

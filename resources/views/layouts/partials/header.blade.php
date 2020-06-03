@@ -53,7 +53,7 @@
                         <li class="has-child"><a href="#">Account</a>
                             <ul class="child-navigation">
                                 <li><a href="{{route('admin')}}">Your Account</a></li>
-                                <li><a href="{{route('admin.properties.index')}}">My Properties</a></li>
+                                <li><a href="{{route('admin.properties.myproperties')}}">My Properties</a></li>
                             </ul>
                         </li>
                         @endif
