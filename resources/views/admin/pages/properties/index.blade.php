@@ -56,7 +56,7 @@
                                         </td>
                                         <td><div class="inner">
                                             <a href="{{route('showProperty', $property->id)}}"><h2>987 Cantebury Drive</h2></a>
-                                            <figure>{{$property->address}}, {{$property->zip}}</figure>
+                                            <figure>{{substr($property->address, 0, 30)}}..., {{$property->zip}}</figure>
                                             <div class="tag price">&pound; {{number_format($property->price)}}</div>
                                         </div>
                                         </td>
@@ -64,6 +64,7 @@
                                         <td><label class="label label-info">{{$property->user->getName()}}</label></td>
                                         <td class="actions">
                                             <a href="{{route('admin.properties.edit', $property->id)}}" class="edit"><i class="fa fa-pencil"></i>Edit</a>
+                                            <a href="{{route('admin.properties.editimages', $property->id)}}" class="edit"><i class="fa fa-picture-o"></i>Images</a>
                                             <a href="#"><i class="delete fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>

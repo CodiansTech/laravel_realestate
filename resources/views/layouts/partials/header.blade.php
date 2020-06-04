@@ -48,7 +48,6 @@
                         <li class="{{ (request()->is('list*')) ? 'active' : '' }}"><a href="{{route('listproperties')}}">Properties</a></li>
                         
                         
-                        <li><a href="#">Submit</a></li>
                         @if(Auth::user())
                         <li class="has-child"><a href="#">Account</a>
                             <ul class="child-navigation">
