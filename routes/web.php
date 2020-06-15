@@ -20,6 +20,8 @@ Route::get('contact', 'PageController@contact')->name('contact.index');
 Route::get('list', 'PropertyController@listProperties')->name('listproperties');
 Route::get('list/{id}', 'PropertyController@show')->name('showProperty');
 
+Route::post('account/update', 'UserController@updateProfile')->name('update.profile');
+Route::post('account/password', 'UserController@updatePassword')->name('update.password');
 
 Auth::routes();
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -98,6 +100,39 @@ class UserController extends Controller
 
         Session::flash('success', 'User has been updated successfully!');
         return redirect()->route('admin.users.index');
+    }
+
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProfile(Request $request)
+    {
+        $user = User::findOrFail(auth()->id());
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->update();
+
+        Session::flash('success', 'Your profile has been updated successfully!');
+        return redirect()->route('admin');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = User::findOrFail(auth()->id());
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+        
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+
+        Session::flash('success', 'Password has been updated successfully!');
+        return redirect()->route('admin');
     }
 
     /**
