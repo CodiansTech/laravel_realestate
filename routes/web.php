@@ -49,3 +49,9 @@ Route::group(['middleware' => ['permission:manage-properties']], function () {
     Route::get('account/approveproperties', 'PropertyController@approveproperties')->name('admin.properties.approve');
     Route::get('account/approveproperty/{id}', 'PropertyController@approveproperty')->name('admin.properties.approveproperty');
 });
+
+
+Route::group(['middleware' => ['permission:manage-settings']], function () {
+    Route::get('admin/settings', 'SettingsController@index')->name('admin.settings.index');
+    Route::post('admin/settings', 'SettingsController@update')->name('admin.settings.update');
+});

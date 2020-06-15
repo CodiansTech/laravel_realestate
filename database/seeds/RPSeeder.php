@@ -17,6 +17,7 @@ class RPSeeder extends Seeder
         app(Permission::class)->create(['name' => 'view-admin', 'guard_name' => 'web']);
         app(Permission::class)->create(['name' => 'manage-users', 'guard_name' => 'web']);
         app(Permission::class)->create(['name' => 'manage-properties', 'guard_name' => 'web']);
+        app(Permission::class)->create(['name' => 'manage-settings', 'guard_name' => 'web']);
 
 
         $admin = app(Role::class)->create(['name' => 'admin', 'guard_name' => 'web']);
@@ -26,6 +27,7 @@ class RPSeeder extends Seeder
         $admin->givePermissionTo('view-admin');
         $admin->givePermissionTo('manage-users');
         $admin->givePermissionTo('manage-properties');
+        $admin->givePermissionTo('manage-settings');
         
         $agent->givePermissionTo('view-admin');
         
