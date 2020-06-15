@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Property;
 use Session;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -109,5 +110,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function userProperties($id){
+        $user = User::findOrFail($id);
+
+        $properties = Property::where('user_id', $user->id)->paginate(10);
+        return view('admin.pages.users.properties')->withProperties($properties)->withUser($user);
     }
 }
