@@ -32,9 +32,12 @@ Route::group(['middleware' => ['permission:view-admin']], function () {
 });
 
 Route::group(['middleware' => ['permission:manage-users']], function () {
-    Route::get('account/users', 'UserController@index')->name('admin.users.index');
-    Route::get('account/users/{id}/edit', 'UserController@edit')->name('admin.users.edit');
-    Route::post('account/users/{id}/edit', 'UserController@update')->name('admin.users.update');
+    Route::get('admin/users', 'UserController@index')->name('admin.users.index');
+    Route::get('admin/users/{id}/edit', 'UserController@edit')->name('admin.users.edit');
+    Route::post('admin/users/{id}/edit', 'UserController@update')->name('admin.users.update');
+    
+    Route::get('admin/users/{id}/properties', 'UserController@userProperties')->name('admin.users.properties');
+    Route::post('admin/users/{id}/editProperty', 'UserController@editProperty')->name('admin.users.updateProperty');
 });
 
 Route::group(['middleware' => ['permission:manage-properties']], function () {
