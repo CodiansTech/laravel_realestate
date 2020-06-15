@@ -49,11 +49,10 @@
                                 <h3>Contact</h3>
                                 <address>
                                     <strong>Your Company</strong><br>
-                                    4877 Spruce Drive<br>
-                                    West Newton, PA 15089
+                                   {!! getAddress() !!}
                                 </address>
-                                +1 (734) 123-4567<br>
-                                <a href="#">hello@example.com</a>
+                                {!! getPhone() !!}<br>
+                                <a href="#">{!! getEmail() !!}</a>
                             </article>
                         </div><!-- /.col-sm-3 -->
                         <div class="col-md-3 col-sm-3">

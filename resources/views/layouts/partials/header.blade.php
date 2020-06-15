@@ -2,8 +2,8 @@
         <div class="secondary-navigation">
             <div class="container">
                 <div class="contact">
-                    <figure><strong>Phone:</strong>+44 123 123 123</figure>
-                    <figure><strong>Email:</strong>info@email.com</figure>
+                    <figure><strong>Phone:</strong>{!! getPhone() !!}</figure>
+                    <figure><strong>Email:</strong>{!! getEmail() !!}</figure>
                 </div>
                 <div class="user-area">
                     <div class="actions">
