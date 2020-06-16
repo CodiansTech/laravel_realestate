@@ -59,7 +59,13 @@
                             <figure>{{$property->address}}, {{$property->zip}}</figure>
                             <span class="actions">
                                 <!--<a href="#" class="fa fa-print"></a>-->
-                                <a href="#" class="bookmark" data-bookmark-state="empty"><span class="title-add">Add to bookmark</span><span class="title-added">Added</span></a>
+                                @if($user != null)
+                                    @if($user->bookmarks->contains($property->id))
+                                    <a href="{{route('bookmarkProperty', $property->id)}}" class="bookmark bookmark-added" data-bookmark-state="empty"><span class="title-add">Add to bookmark</span><span class="title-added">Bookmarked</span></a>
+                                    @else
+                                    <a href="{{route('bookmarkProperty', $property->id)}}" class="bookmark" data-bookmark-state="empty"><span class="title-add">Add to bookmark</span><span class="title-added">Added</span></a>
+                                    @endif
+                                @endif
                             </span>
                         </header>
                         <section id="property-gallery">

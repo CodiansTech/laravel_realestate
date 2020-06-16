@@ -36,6 +36,10 @@ class Property extends Model
         return $this->featuredimage;
     }
 
+    public function users(){
+        return $this->belongsToMany('App\User', 'bookmarks');
+    }
+
     public function getFeaturedImageURL(){
         if($this->featuredimage != null)
             return 'images/property/'.$this->images()->where('id', $this->featuredimage)->first()->filename;

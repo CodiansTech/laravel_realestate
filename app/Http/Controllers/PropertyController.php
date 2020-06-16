@@ -153,7 +153,8 @@ class PropertyController extends Controller
 
     public function show($id){
         $property = Property::findOrFail($id);
-        return view('pages.properties.property_details')->withProperty($property);
+        $user = Auth::user();
+        return view('pages.properties.property_details')->withProperty($property)->withUser($user);
     }
 
     public function approveproperties(){
@@ -184,6 +185,19 @@ class PropertyController extends Controller
 
 
         return redirect()->route('admin.properties.editimages', $property->id);
+    }
+
+    public function bookmarkProperty($id){
+        $property = Property::findOrFail($id);
+        $user = Auth::user();
+        
+        if(!$property->users->contains($user->id))
+            $property->users()->attach($user);
+        else
+            $property->users()->detach($user);
+        
+        
+        return redirect()->back();
     }
 
 }

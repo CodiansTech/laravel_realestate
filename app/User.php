@@ -58,6 +58,10 @@ class User extends Authenticatable
         return false;
     }
 
+    public function bookmarks(){
+        return $this->belongsToMany('App\Property', 'bookmarks');
+    }
+
     public function getRole(){
         if($this->hasRole('admin'))
             return 'Admin';

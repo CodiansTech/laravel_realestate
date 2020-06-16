@@ -20,6 +20,9 @@ Route::get('contact', 'PageController@contact')->name('contact.index');
 Route::get('list', 'PropertyController@listProperties')->name('listproperties');
 Route::get('list/{id}', 'PropertyController@show')->name('showProperty');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('list/{id}/bookmark', 'PropertyController@bookmarkProperty')->name('bookmarkProperty');
+});
 
 Auth::routes();
 
