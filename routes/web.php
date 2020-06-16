@@ -23,6 +23,8 @@ Route::get('list/{id}', 'PropertyController@show')->name('showProperty');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('list/{id}/bookmark', 'PropertyController@bookmarkProperty')->name('bookmarkProperty');
 });
+Route::post('account/update', 'UserController@updateProfile')->name('update.profile');
+Route::post('account/password', 'UserController@updatePassword')->name('update.password');
 
 Auth::routes();
 
@@ -44,6 +46,7 @@ Route::group(['middleware' => ['permission:manage-users']], function () {
 Route::group(['middleware' => ['permission:manage-properties']], function () {
     Route::get('account/properties', 'PropertyController@adminIndex')->name('admin.properties.index');
     Route::get('account/myproperties', 'PropertyController@myproperties')->name('admin.properties.myproperties');
+    Route::get('account/bookmarked', 'PropertyController@bookmarkedProperties')->name('admin.properties.bookmarked');
     Route::get('account/properties/create', 'PropertyController@create')->name('admin.properties.create');
     Route::post('account/properties/store', 'PropertyController@store')->name('admin.properties.store');
     Route::get('account/properties/{id}/edit', 'PropertyController@edit')->name('admin.properties.edit');

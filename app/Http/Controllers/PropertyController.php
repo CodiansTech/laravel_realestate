@@ -200,4 +200,12 @@ class PropertyController extends Controller
         return redirect()->back();
     }
 
+    public function bookmarkedProperties(){
+        $user = Auth::user();
+        $properties = $user->bookmarks()->paginate(10);
+        
+        return view('admin.pages.properties.bookmarked')->withUser($user)->withProperties($properties);
+    }
+
+
 }

@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="navbar-brand nav" id="brand">
-                        <a href="{{route('index')}}"><img src="{{URL::asset('assets/img/logo.png')}}" alt="brand"></a>
+                        <a href="{{route('index')}}"><img src="{{URL::asset('assets/img/logo.png')}}" style="width:100px;" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
