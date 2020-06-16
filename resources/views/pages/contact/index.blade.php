@@ -52,18 +52,19 @@
                         <hr class="thick">
                         <section id="form">
                             <header><h3>Send Us a Message</h3></header>
-                            <form role="form" id="form-contact" method="post"  class="clearfix">
+                            <form role="form" id="form-contact" method="post"  class="clearfix" action="{{ route('contact.us') }}">
+                            @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="form-contact-name">Your Name<em>*</em></label>
-                                            <input type="text" class="form-control" id="form-contact-name" name="form-contact-name" required>
+                                            <input type="text" class="form-control" id="name" name="name" required>
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-md-6 -->
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="form-contact-email">Your Email<em>*</em></label>
-                                            <input type="email" class="form-control" id="form-contact-email" name="form-contact-email" required>
+                                            <input type="email" class="form-control" id="email" name="email" required>
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-md-6 -->
                                 </div><!-- /.row -->
@@ -71,12 +72,12 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="form-contact-message">Your Message<em>*</em></label>
-                                            <textarea class="form-control" id="form-contact-message" rows="8" name="form-contact-message" required></textarea>
+                                            <textarea class="form-control" id="message" rows="8" name="message" required></textarea>
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-md-12 -->
                                 </div><!-- /.row -->
                                 <div class="form-group clearfix">
-                                    <button type="submit" class="btn pull-right btn-default" id="form-contact-submit">Send a Message</button>
+                                    <button type="submit" class="btn pull-right btn-default" id="form-contact">Send a Message</button>
                                 </div><!-- /.form-group -->
                                 <div id="form-status"></div>
                             </form><!-- /#form-contact -->
