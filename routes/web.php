@@ -23,6 +23,7 @@ Route::get('list/{id}', 'PropertyController@show')->name('showProperty');
 Route::post('account/update', 'UserController@updateProfile')->name('update.profile');
 Route::post('account/password', 'UserController@updatePassword')->name('update.password');
 
+Route::post('contact-us', 'ContactController@saveContact')->name('contact.us');
 Auth::routes();
 
 Route::group(['middleware' => ['permission:view-admin']], function () {
