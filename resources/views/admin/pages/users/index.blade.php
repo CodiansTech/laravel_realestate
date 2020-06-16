@@ -50,7 +50,7 @@
 										<td></td>
                                         <td>{{$user->getName()}}</td>
 										<td>{{$user->email}}</td>
-										<td>{{$user->properties->count()}}</td>
+										<td><a href="{{route('admin.users.properties', $user->id)}}" class="btn btn-success">{{$user->properties->count()}}</a></td>
                                         <td><label class="btn btn-default"><strong>{{$user->getRole()}}</strong></label></td>
                                         <td class="actions">
                                             <a href="{{route('admin.users.edit', $user->id)}}" class="edit"><i class="fa fa-pencil"></i>Edit</a>
