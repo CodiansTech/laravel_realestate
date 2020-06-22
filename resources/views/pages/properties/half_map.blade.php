@@ -3,9 +3,20 @@
 @section('title', 'Listings')
 
 @section('head')
-<style>
-
-</style>
+    <link rel="stylesheet" href="{{url('assets/css/leaflet.css')}}" type="text/css">
+    @mapstyles
+    <style>
+        .gnw-map-service {
+            width: 100%;
+            height: 750px;
+        }
+        .gnw-map.fade {
+            transition: opacity .15s linear;
+        }
+        .gnw-map.fade:not(.show) {
+            opacity: 0;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -110,7 +121,12 @@
                 </div><!-- /.col-md-9 -->
 
                 <div class="col-md-6 col-sm-6">
-                    <div id="map"></div>
+                    @map([
+					    'lat' => 51.5083, 
+						'lng' => -0.270139,
+						'zoom' => 15,
+                        'markers' => $maparray,
+                    ])
                 </div>
                 <!-- end Results -->
                 <!-- end Sidebar -->
@@ -122,7 +138,31 @@
 @endsection
 
 @section('script')
-<script type="text/javascript">
-
+@mapscripts
+<script>
+	window.addEventListener('LaravelMaps:MapInitialized', function (event) {
+		var element = event.detail.element;
+		var map = event.detail.map;
+		var marker = event.detail.marker;
+		var service = event.detail.service;
+        var lat = {!! $property->lat !!};
+        var long = {!! $property->long !!};
+		console.log('lat: '+lat+' - long: '+long)
+		var marker2 = L.marker([lat,long]).addTo(map);
+		// 	draggable: true
+		// var marker1;
+		// map.on('click', function(e) {
+		// 	map.removeLayer(marker2);
+		// 	if (marker1) { // check
+		// 		map.removeLayer(marker1); // remove
+		// 	}
+		// 	console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
+		// 	document.getElementById("latitude").value = e.latlng.lat;
+		// 	document.getElementById("longitude").value = e.latlng.lng;
+		// 	marker1 = L.marker(e.latlng).addTo(map);
+		// });
+	});
+	
+	
 </script>
 @endsection

@@ -26,10 +26,23 @@ class PropertyController extends Controller
     }
 
     public function halfMap(){
+        $maparray = array();
         $auth = Auth::user();
 
+        
         $properties = Property::where('user_id', $auth->id)->orderBy('id', 'desc')->paginate(10);
-        return view('pages.properties.half_map')->withProperties($properties);
+        foreach($properties as $property){
+            array_push($maparray, [
+                'title' => 'Go NoWare',
+                'lat' => $property->lat, 
+                'lng' => $property->lng,
+                'url' => 'https://gonoware.com',
+                'popup' => '<a target="_blank" href="'.route('showProperty',$property->id).'"><h5>'.$property->address.'</h5><img src="'.$property->getFeaturedImageURL().'" >'. $properties->count().'</a>.</p>',
+                'icon_size' => [20, 32],
+                'icon_anchor' => [20, 32],
+            ]);
+        }
+        return view('pages.properties.half_map')->withProperties($properties)->with('maparray', $maparray);
     }
 
     public function listProperties(){
