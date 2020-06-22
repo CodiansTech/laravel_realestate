@@ -22,9 +22,7 @@
                         @endif
                     </div>
                     <div class="language-bar">
-                        <a href="#" class="active"><img src="assets/img/flags/gb.png" alt=""></a>
-                        <a href="#"><img src="assets/img/flags/de.png" alt=""></a>
-                        <a href="#"><img src="assets/img/flags/es.png" alt=""></a>
+                        <a href="#" class="active"><img src="{{URL::asset('assets/img/flags/gb.png')}}" alt=""></a>
                     </div>
                 </div>
             </div>

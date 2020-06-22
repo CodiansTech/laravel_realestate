@@ -9,7 +9,15 @@ class Property extends Model
     protected $table = 'properties';
     
     public function images(){
+        return $this->allimages()->where('type', 'gallery');
+    }
+
+    public function allimages(){
         return $this->hasMany('App\Image');
+    }
+
+     public function floorplanimages(){
+        return $this->allimages()->where('type', 'floorplan');
     }
 
     public function user(){
@@ -45,5 +53,9 @@ class Property extends Model
             return 'images/property/'.$this->images()->where('id', $this->featuredimage)->first()->filename;
         return 'assets/img/properties/property-09.jpg';
         // return $this->hasOne('App\Image', 'id', $this->featuredimage);
+    }
+
+    public function getPrice(){
+        return number_format($this->price);
     }
 }

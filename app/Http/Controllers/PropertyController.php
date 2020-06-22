@@ -45,7 +45,7 @@ class PropertyController extends Controller
             'address' => 'required|min:3|max:255',
             'city' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
-            'filename' => 'required|mimes:jpg,jpeg,png',
+            // 'filename'=>'required|mimes:jpeg,png,jpg'
         ]);
 
     
@@ -86,9 +86,27 @@ class PropertyController extends Controller
                 $image = new Image();
                 $image->filename= $name;
                 $image->property_id = $property->id;
+                $image->type = 'gallery';
                 $image->save();
 
-                $img->move(public_path().'/images/property/', $name);  
+                $img->move(public_path().'/storage/app/property/', $name);  
+            }
+        }
+
+        if($request->hasfile('floorplan'))
+        {
+            foreach($request->file('floorplan') as $img)
+            {
+                $date = Date('d-m-Y');
+                $name = $date.'-'.$img->getClientOriginalName();
+
+                $image = new Image();
+                $image->filename= $name;
+                $image->property_id = $property->id;
+                $image->type = 'floorplan';
+                $image->save();
+
+                $img->move(public_path().'/storage/app/property/', $name);  
             }
         }
         return redirect()->route('admin.properties.index');
@@ -117,7 +135,6 @@ class PropertyController extends Controller
             }
         });
 
-        // dd($request->latitude. ' - '. $request->longitude);
         $property = Property::findOrFail($id);
         $property->title = $request->title;
         $property->description = $request->description;

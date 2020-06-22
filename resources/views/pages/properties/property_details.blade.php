@@ -1,45 +1,32 @@
-@extends('layouts.main')
+<!DOCTYPE html>
 
-@section('title', 'Homepage')
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ThemeStarz">
 
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="{{URL::asset('assets/fonts/font-awesome.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('assets/bootstrap/css/bootstrap.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-select.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/magnific-popup.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/jquery.slider.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/owl.carousel.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}" type="text/css">
 
-@section('head')
-@mapstyles
-@endsection
+    <title>Property Detail | Maison Chase</title>
+    
+    @mapstyles
+</head>
 
-@section('script')
-@mapscripts
-<script>
-	window.addEventListener('LaravelMaps:MapInitialized', function (event) {
-		var element = event.detail.element;
-		var map = event.detail.map;
-		var marker = event.detail.marker;
-		var service = event.detail.service;
-        var lat = {!! $property->lat !!};
-        var long = {!! $property->long !!};
-		console.log('lat: '+lat+' - long: '+long)
-		var marker2 = L.marker([lat,long]).addTo(map);
-		// 	draggable: true
-		// var marker1;
-		// map.on('click', function(e) {
-		// 	map.removeLayer(marker2);
-		// 	if (marker1) { // check
-		// 		map.removeLayer(marker1); // remove
-		// 	}
-		// 	console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
-		// 	document.getElementById("latitude").value = e.latlng.lat;
-		// 	document.getElementById("longitude").value = e.latlng.lng;
-		// 	marker1 = L.marker(e.latlng).addTo(map);
-		// });
-	});
-	
-	
-</script>
-@endsection
-
-@section('content')
-   <!-- Page Content -->
-   <div id="page-content">
+<body class="page-sub-page page-property-detail" id="page-top">
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Navigation -->
+    @include('layouts.partials.header')
+    <!-- Page Content -->
+    <div id="page-content">
         <!-- Breadcrumb -->
         <div class="container">
             <ol class="breadcrumb">
@@ -56,38 +43,23 @@
                     <section id="property-detail">
                         <header class="property-title">
                             <h1>987 Cantebury Drive</h1>
-                            <figure>{{$property->address}}, {{$property->zip}}</figure>
+                            <figure>Golden Valley, MN 55427</figure>
                             <span class="actions">
                                 <!--<a href="#" class="fa fa-print"></a>-->
-                                @if($user != null)
-                                    @if($user->bookmarks->contains($property->id))
-                                    <a href="{{route('bookmarkProperty', $property->id)}}" class="bookmark bookmark-added" data-bookmark-state="empty"><span class="title-add">Add to bookmark</span><span class="title-added">Bookmarked</span></a>
-                                    @else
-                                    <a href="{{route('bookmarkProperty', $property->id)}}" class="bookmark" data-bookmark-state="empty"><span class="title-add">Add to bookmark</span><span class="title-added">Added</span></a>
-                                    @endif
-                                @endif
+                                <a href="#" class="bookmark" data-bookmark-state="empty"><span class="title-add">Add to bookmark</span><span class="title-added">Added</span></a>
                             </span>
                         </header>
                         <section id="property-gallery">
                             <div class="owl-carousel property-carousel">
+                                @foreach($property->images as $image)
                                 <div class="property-slide">
-                                    <a href="assets/img/properties/property-detail-01.jpg" class="image-popup">
+                                    <a href="{{URL::asset('images/property/'.$image->filename)}}" class="image-popup">
                                         <div class="overlay"><h3>Front View</h3></div>
-                                        <img alt="" src="assets/img/properties/property-detail-01.jpg">
+                                        <img alt="" src="{{URL::asset('images/property/'.$image->filename)}}"">
                                     </a>
                                 </div><!-- /.property-slide -->
-                                <div class="property-slide">
-                                    <a href="assets/img/properties/property-detail-02.jpg" class="image-popup">
-                                        <div class="overlay"><h3>Bedroom</h3></div>
-                                        <img alt="" src="assets/img/properties/property-detail-02.jpg">
-                                    </a>
-                                </div><!-- /.property-slide -->
-                                <div class="property-slide">
-                                    <a href="assets/img/properties/property-detail-03.jpg" class="image-popup">
-                                        <div class="overlay"><h3>Bathroom</h3></div>
-                                        <img alt="" src="assets/img/properties/property-detail-03.jpg">
-                                    </a>
-                                </div><!-- /.property-slide -->
+                                @endforeach
+                               
                             </div><!-- /.property-carousel -->
                         </section>
                         <div class="row">
@@ -139,14 +111,17 @@
                                 <section id="floor-plans">
                                     <div class="floor-plans">
                                         <header><h2>Floor Plans</h2></header>
-                                        <a href="assets/img/properties/floor-plan-big.jpg" class="image-popup"><img alt="" src="assets/img/properties/floor-plan-01.jpg"></a>
-                                        <a href="assets/img/properties/floor-plan-big.jpg" class="image-popup"><img alt="" src="assets/img/properties/floor-plan-02.jpg"></a>
+
+                                        @foreach($property->floorplanimages as $image)
+                                            <a href="{{URL::asset('images/property/'.$image->filename)}}" class="image-popup"><img alt="" style="height:100px; width:130px" src="{{URL::asset('images/property/'.$image->filename)}}"></a>
+                                        @endforeach 
+                                       
                                     </div>
                                 </section><!-- /#floor-plans -->
-                                <section id="property-map" style="margin-bottom: 100px;">
+                                <section id="property-map">
                                     <header><h2>Map</h2></header>
                                     <div class="property-detail-map-wrapper">
-                                        <div class="property-detail-map" id="property-detail-map">
+                                       <div class="" id="">
                                         @map([
 											'lat' => $property->lat,
 											'lng' => $property->long,
@@ -155,58 +130,8 @@
                                         </div>
                                     </div>
                                 </section><!-- /#property-map -->
-                                <section id="property-rating">
-                                    <header><h2>Rating</h2></header>
-                                    <div class="clearfix">
-                                        <aside>
-                                            <header>Your Rating</header>
-                                            <div class="rating rating-user">
-                                                <div class="inner"></div>
-                                            </div>
-                                        </aside>
-                                        <figure>
-                                            <header>Overall Rating</header>
-                                            <div class="rating rating-overall" data-score="4"></div>
-                                        </figure>
-                                    </div>
-                                    <div class="rating-form">
-                                        <header>Thank you! Please describe your rating</header>
-                                        <form role="form" id="form-rating" method="post"  class="clearfix">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="form-rating-name">Your Name<em>*</em></label>
-                                                        <input type="text" class="form-control" id="form-rating-name" name="form-rating-name" required>
-                                                    </div><!-- /.form-group -->
-                                                </div><!-- /.col-md-6 -->
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="form-rating-email">Your Email<em>*</em></label>
-                                                        <input type="email" class="form-control" id="form-rating-email" name="form-rating-email" required>
-                                                    </div><!-- /.form-group -->
-                                                </div><!-- /.col-md-6 -->
-                                            </div><!-- /.row -->
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="form-rating-message">Your Message<em>*</em></label>
-                                                        <textarea class="form-control" id="form-rating-message" rows="6" name="form-rating-message" required></textarea>
-                                                    </div><!-- /.form-group -->
-                                                </div><!-- /.col-md-12 -->
-                                            </div><!-- /.row -->
-                                            <div class="form-group">
-                                                <button type="submit" class="btn pull-right btn-default" id="form-rating-submit">Send a Message</button>
-                                            </div><!-- /.form-group -->
-                                            <div id="form-rating-status"></div>
-                                        </form><!-- /#form-contact -->
-                                    </div><!-- /.rating-form -->
-                                </section><!-- /#property-rating -->
-                                <section id="video-presentation">
-                                    <header><h2>Video Presentation</h2></header>
-                                    <div class="video">
-                                        <iframe src="//player.vimeo.com/video/34741214?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" ></iframe>
-                                    </div>
-                                </section><!-- /#video-presentation -->
+                                            <br>
+                                            <br>
                             </div><!-- /.col-md-8 -->
                             <div class="col-md-12 col-sm-12">
                                 <section id="contact-agent">
@@ -215,7 +140,7 @@
                                         <section class="agent-form">
                                             <div class="col-md-7 col-sm-12">
                                                 <aside class="agent-info clearfix">
-                                                    <figure><a href="agent-detail.html"><img alt="" src="assets/img/agent-01.jpg"></a></figure>
+                                                    <figure><a href="agent-detail.html"><img alt="" src="{{URL::asset('assets/img/agent-01.jpg')}}"></a></figure>
                                                     <div class="agent-contact-info">
                                                         <h3>Robert Farley</h3>
                                                         <p>
@@ -271,11 +196,11 @@
                                             <div class="property">
                                                 <a href="property-detail.html">
                                                     <div class="property-image">
-                                                        <img alt="" src="{{url('assets/img/properties/property-06.jpg')}}">
+                                                        <img alt="" src="{{URL::asset('assets/img/properties/property-06.jpg')}}">
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">
-                                                            <div class="tag price">&pound; 11,000</div>
+                                                            <div class="tag price">$ 11,000</div>
                                                             <h3>3398 Lodgeville Road</h3>
                                                             <figure>Golden Valley, MN 55427</figure>
                                                         </div>
@@ -305,11 +230,11 @@
                                             <div class="property">
                                                 <a href="property-detail.html">
                                                     <div class="property-image">
-                                                        <img alt="" src="{{url('assets/img/properties/property-04.jpg')}}">
+                                                        <img alt="" src="{{URL::asset('assets/img/properties/property-04.jpg')}}">
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">
-                                                            <div class="tag price">&pound; 38,000</div>
+                                                            <div class="tag price">$ 38,000</div>
                                                             <h3>2186 Rinehart Road</h3>
                                                             <figure>Doral, FL 33178 </figure>
                                                         </div>
@@ -339,7 +264,7 @@
                                             <div class="property">
                                                 <a href="property-detail.html">
                                                     <div class="property-image">
-                                                        <img alt="" src="{{url('assets/img/properties/property-07.jpg')}}">
+                                                        <img alt="" src="{{URL::asset('assets/img/properties/property-07.jpg')}}">
                                                     </div>
                                                     <div class="overlay">
                                                         <div class="info">
@@ -372,71 +297,7 @@
                                     </div><!-- /.row-->
                                 </section><!-- /#similar-properties -->
                                 <hr class="thick">
-                                <section id="comments">
-                                    <header><h2 class="no-border">Comments</h2></header>
-                                    <ul class="comments">
-                                        <li class="comment">
-                                            <figure>
-                                                <div class="image">
-                                                    <img alt="" src="assets/img/client-01.jpg">
-                                                </div>
-                                            </figure>
-                                            <div class="comment-wrapper">
-                                                <div class="name pull-left">Catherine Brown</div>
-                                                <span class="date pull-right"><span class="fa fa-calendar"></span>12.05.2014</span>
-                                                <div class="rating rating-individual" data-score="4"></div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum, sem ut sollicitudin consectetur,
-                                                    augue diam ornare massa, ac vehicula leo turpis eget purus. Nunc pellentesque vestibulum mauris, eget suscipit
-                                                    mauris imperdiet vel. Nulla et massa metus. Nam porttitor quam eget ante elementum consectetur. Aenean ac nisl
-                                                    et nulla placerat suscipit eu a mauris. Curabitur quis augue condimentum, varius mi in, ultricies velit.
-                                                    Suspendisse potenti.
-                                                </p>
-                                                <a href="#" class="reply"><span class="fa fa-reply"></span>Reply</a>
-                                                <hr>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <ul class="comments-child">
-                                                <li class="comment">
-                                                    <figure>
-                                                        <div class="image">
-                                                            <img alt="" src="assets/img/agent-01.jpg">
-                                                        </div>
-                                                    </figure>
-                                                    <div class="comment-wrapper">
-                                                        <div class="name">John Doe</div>
-                                                        <span class="date"><span class="fa fa-calendar"></span>24.06.2014</span>
-                                                        <div class="rating rating-individual" data-score="3"></div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum, sem ut sollicitudin consectetur,
-                                                            augue diam ornare massa, ac vehicula leo turpis eget purus. Nunc pellentesque vestibulum mauris, eget suscipit
-                                                            mauris.
-                                                        </p>
-                                                        <a href="#" class="reply"><span class="fa fa-reply"></span>Reply</a>
-                                                        <hr>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="comment">
-                                            <figure>
-                                                <div class="image">
-                                                    <img alt="" src="assets/img/user-02.jpg">
-                                                </div>
-                                            </figure>
-                                            <div class="comment-wrapper">
-                                                <div class="name">John Doe</div>
-                                                <span class="date"><span class="fa fa-calendar"></span>08.05.2014</span>
-                                                <div class="rating rating-individual" data-score="5"></div>
-                                                <p>Quisque iaculis neque at dui cursus posuere. Sed tristique pharetra orci, eu malesuada ante tempus nec.
-                                                    Phasellus enim odio, facilisis et ante vel, tempor congue sapien. Praesent eget ligula
-                                                    eu libero cursus facilisis vel non arcu. Sed vitae quam enim.
-                                                </p>
-                                                <a href="#" class="reply"><span class="fa fa-reply"></span>Reply</a>
-                                                <hr>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </section>
+                                
                             </div><!-- /.col-md-12 -->
                         </div><!-- /.row -->
                     </section><!-- /#property-detail -->
@@ -511,7 +372,7 @@
                             <div class="property small">
                                 <a href="property-detail.html">
                                     <div class="property-image">
-                                        <img alt="" src="assets/img/properties/property-06.jpg">
+                                        <img alt="" src="{{URL::asset('assets/img/properties/property-06.jpg')}}">
                                     </div>
                                 </a>
                                 <div class="info">
@@ -523,7 +384,7 @@
                             <div class="property small">
                                 <a href="property-detail.html">
                                     <div class="property-image">
-                                        <img alt="" src="assets/img/properties/property-09.jpg">
+                                        <img alt="" src="{{URL::asset('assets/img/properties/property-09.jpg')}}">
                                     </div>
                                 </a>
                                 <div class="info">
@@ -535,7 +396,7 @@
                             <div class="property small">
                                 <a href="property-detail.html">
                                     <div class="property-image">
-                                        <img alt="" src="assets/img/properties/property-03.jpg">
+                                        <img alt="" src="{{URL::asset('assets/img/properties/property-03.jpg')}}">
                                     </div>
                                 </a>
                                 <div class="info">
@@ -565,9 +426,64 @@
         </div><!-- /.container -->
     </div>
     <!-- end Page Content -->
- @endsection
+    <!-- Page Footer -->
+    @include('layouts.partials.footer')
+    <!-- end Page Footer -->
+</div>
 
-@section('script')
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery-2.1.0.min.js')}}"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/smoothscroll.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/infobox.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/bootstrap-select.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.validate.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.placeholder.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/icheck.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/retina-1.1.0.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jshashtable-2.1_src.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.numberformatter-1.2.3.j')}}s"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/tmpl.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.dependClass-0.1.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/draggable-0.1.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.slider.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.fitvids.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/custom-map.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/custom.js')}}"></script>
+<!--[if gt IE 8]>
+<script type="text/javascript" src="assets/js/ie.js"></script>
+<![endif]-->
+
+@mapscripts
+<script>
+	window.addEventListener('LaravelMaps:MapInitialized', function (event) {
+		var element = event.detail.element;
+		var map = event.detail.map;
+		var marker = event.detail.marker;
+		var service = event.detail.service;
+        var lat = {!! $property->lat !!};
+        var long = {!! $property->long !!};
+		console.log('lat: '+lat+' - long: '+long)
+		var marker2 = L.marker([lat,long]).addTo(map);
+		// 	draggable: true
+		// var marker1;
+		// map.on('click', function(e) {
+		// 	map.removeLayer(marker2);
+		// 	if (marker1) { // check
+		// 		map.removeLayer(marker1); // remove
+		// 	}
+		// 	console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
+		// 	document.getElementById("latitude").value = e.latlng.lat;
+		// 	document.getElementById("longitude").value = e.latlng.lng;
+		// 	marker1 = L.marker(e.latlng).addTo(map);
+		// });
+	});
+	
+	
+</script>
 <script type="text/javascript">
     var propertyId = 0;
     google.maps.event.addDomListener(window, 'load', initMap(propertyId));
@@ -575,4 +491,6 @@
         initializeOwl(false);
     });
 </script>
-@endsection
+
+</body>
+</html>
