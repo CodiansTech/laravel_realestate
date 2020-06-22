@@ -65,39 +65,46 @@
                                             @csrf
                                             <h3>Contact</h3>
                                             <dl class="contact-fields">
+                                             <dt><label for="email">Email:</label></dt>
+                                                <dd>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="email"
+                                                            name="email" value="{{$user->email}}" readonly>
+                                                    </div><!-- /.form-group -->
+                                                </dd>
                                                 <dt><label for="name">Your Name:</label></dt>
                                                 <dd>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" id="name"
                                                             name="name" required
-                                                            value="{{Auth::user()->getName()}}">
+                                                            value="{{$user->getName()}}">
                                                     </div><!-- /.form-group -->
                                                 </dd>
-                                                <dt><label for="form-account-phone">Phone:</label></dt>
-                                                <dd>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" id="form-account-phone"
-                                                            name="form-account-phone" value="(123) 456 789">
-                                                    </div><!-- /.form-group -->
-                                                </dd>
-                                                <dt><label for="email">Email:</label></dt>
-                                                <dd>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" id="email"
-                                                            name="email" value="{{Auth::user()->email}}">
-                                                    </div><!-- /.form-group -->
-                                                </dd>
-                                                <dt><label for="form-account-skype">Skype:</label></dt>
+                                                <dt><label for="form-account-skype">Address:</label></dt>
                                                 <dd>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" id="form-account-skype"
-                                                            name="form-account-skype" value="jeffrey.scott">
+                                                            name="address" value="{{$user->address}}">
+                                                    </div><!-- /.form-group -->
+                                                </dd>
+                                                <dt><label for="form-account-phone">Mobile Phone:</label></dt>
+                                                <dd>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="form-account-phone"
+                                                            name="mobilephone" value="{{$user->mobilephone}}">
+                                                    </div><!-- /.form-group -->
+                                                </dd>
+                                                <dt><label for="form-account-phone">Home Phone (optional):</label></dt>
+                                                <dd>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="form-account-phone"
+                                                            name="homephone" value="{{$user->homephone}}">
                                                     </div><!-- /.form-group -->
                                                 </dd>
                                             </dl>
                                             <div class="form-group clearfix">
                                             <button type="submit" class="btn btn-default"
-                                                        id="form-account-profile">Change My Profile</button>
+                                                        id="form-account-profile">Update Profile</button>
                                                 </div><!-- /.form-group --> 
                                     </section>
                                     <!-- <section id="about-me">
@@ -173,8 +180,7 @@ Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. 
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <strong>Hint:</strong>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui
-                                                vestibulum, bibendum purus sit amet, vulputate mauris.
+                                            <p>Fill your current password then fill your new password and confirm it.
                                             </p>
                                         </div>
                                     </div>
