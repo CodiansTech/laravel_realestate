@@ -25,6 +25,13 @@ class PropertyController extends Controller
         return view('admin.pages.properties.myproperties')->withProperties($properties);
     }
 
+    public function halfMap(){
+        $auth = Auth::user();
+
+        $properties = Property::where('user_id', $auth->id)->orderBy('id', 'desc')->paginate(10);
+        return view('pages.properties.half_map')->withProperties($properties);
+    }
+
     public function listProperties(){
         $properties = Property::orderBy('id', 'desc')->paginate(15);
         return view('pages.properties.grid_listing')->withProperties($properties);
