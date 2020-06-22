@@ -20,6 +20,8 @@ class CreatePropertiesTable extends Migration
             $table->integer('price');
             $table->integer('area');
             $table->integer('rooms');
+            $table->integer('baths')->default(0);
+            $table->integer('garages')->default(0);
             $table->string('address');
             $table->string('city');
             $table->double('lat', 10, 8);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Property;
 use Session;
+use Auth;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -23,6 +24,11 @@ class UserController extends Controller
     {
         $users = User::paginate(20);
         return view('admin.pages.users.index')->withUsers($users);
+    }
+
+    public function userIndex(){
+        $user = Auth::user();
+        return view('admin.pages.index')->withUser($user);
     }
 
     /**
@@ -83,10 +89,15 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|min:3|max:255',
             'email' => 'required|email|unique:users,email,'.$id,
+            'address' => 'required|min:5',
+            'mobilephone' => 'required|integer',
         ]);
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->mobilephone = $request->mobilephone;
+        $user->address = $request->address;
+        $user->homephone = $request->homephone;
         if(isset($request->password)){
             $user->password = bcrypt($request->password);
         }
@@ -112,9 +123,16 @@ class UserController extends Controller
      */
     public function updateProfile(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+            'address' => 'required|min:5',
+            'mobilephone' => 'required|integer',
+        ]);
         $user = User::findOrFail(auth()->id());
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->mobilephone = $request->mobilephone;
+        $user->address = $request->address;
+        $user->homephone = $request->homephone;
         $user->update();
 
         Session::flash('success', 'Your profile has been updated successfully!');

@@ -13,6 +13,8 @@ $factory->define(Property::class, function (Faker $faker) {
         'price' => rand(1000,10000),
         'area' => rand(1,100),
         'rooms' => rand(1,8),
+        'baths' => rand(0,5),
+        'garages' => rand(0,2),
         'address' => $faker->address,
         'city' => Str::random(10),
         'lat' => rand(1,2),

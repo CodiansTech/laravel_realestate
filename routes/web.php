@@ -30,9 +30,7 @@ Route::post('contact-us', 'ContactController@saveContact')->name('contact.us');
 Auth::routes();
 
 Route::group(['middleware' => ['permission:view-admin']], function () {
-    Route::get('account', function () {
-        return view('admin.pages.index');
-    })->name('admin');
+    Route::get('account','UserController@userIndex')->name('admin');
 });
 
 Route::group(['middleware' => ['permission:manage-users']], function () {

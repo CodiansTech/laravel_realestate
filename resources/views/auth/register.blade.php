@@ -77,9 +77,20 @@
                         </div><!-- /.form-group -->
                         <div class="form-group">
                             <label for="form-create-account-confirm-password">Confirm Password:</label>
-							<input type="password" name="password_confirmation" class="form-control" id="form-create-account-confirm-password" placeholder="Confirm Password" name="password_confirmation" required>
+							<input type="password" name="password_confirmation" class="form-control" id="form-create-account-confirm-password" placeholder="Confirm Password" required>
                                 
                         </div><!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label for="form-create-account-confirm-password">Address:</label>
+							<input type="text" name="address" class="form-control" id="form-create-account-confirm-password" placeholder="Address" value="{{ old('address') }}" required>
+                        </div><!-- /.form-group -->
+                        
+                        <div class="form-group">
+                            <label for="form-create-account-confirm-password">Mobile Phone:</label>
+							<input type="text" name="mobilephone" class="form-control" id="form-create-account-confirm-password" placeholder="Mobile Phone" value="{{ old('mobilephone') }}" value="44" required>
+                        </div><!-- /.form-group -->
+                        
                         <div class="checkbox pull-left">
                             <label>
                                 <input type="checkbox" id="account-type-newsletter" name="account-newsletter">Receive Newsletter

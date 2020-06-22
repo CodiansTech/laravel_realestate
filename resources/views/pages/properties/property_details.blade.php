@@ -68,7 +68,7 @@
                                     <header><h2>Quick Summary</h2></header>
                                     <dl>
                                         <dt>Location</dt>
-                                            <dd>Chicago, IL 60610</dd>
+                                            <dd>{{$property->address}}, {{$property->zip}}</dd>
                                         <dt>Price</dt>
                                             <dd><span class="tag price">&pound; {{number_format($property->price)}}</span></dd>
                                         <dt>Property Type:</dt>
@@ -80,11 +80,9 @@
                                         <dt>Beds:</dt>
                                             <dd>3</dd>
                                         <dt>Baths:</dt>
-                                            <dd>2</dd>
+                                            <dd>{{$property->baths}}</dd>
                                         <dt>Garages:</dt>
-                                            <dd>2</dd>
-                                        <dt>Rating:</dt>
-                                            <dd><div class="rating rating-overall" data-score="4"></div></dd>
+                                            <dd>{{$property->garages}}</dd>
                                     </dl>
                                 </section><!-- /#quick-summary -->
                             </div><!-- /.col-md-4 -->
@@ -142,7 +140,7 @@
                                                 <aside class="agent-info clearfix">
                                                     <figure><a href="agent-detail.html"><img alt="" src="{{URL::asset('assets/img/agent-01.jpg')}}"></a></figure>
                                                     <div class="agent-contact-info">
-                                                        <h3>Robert Farley</h3>
+                                                        <h3>{{$property->user->getName()}}</h3>
                                                         <p>
                                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum,
                                                             bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt.
@@ -219,7 +217,7 @@
                                                             </li>
                                                             <li>
                                                                 <header>Garages:</header>
-                                                                <figure>0</figure>
+                                                                <figure>1</figure>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -282,7 +280,7 @@
                                                                 <figure>3</figure>
                                                             </li>
                                                             <li>
-                                                                <header>Baths:</header>
+                                                                <header{{$property->user->getName()}}:</header>
                                                                 <figure>1</figure>
                                                             </li>
                                                             <li>

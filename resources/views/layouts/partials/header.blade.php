@@ -47,10 +47,11 @@
                         
                         
                         @if(Auth::user())
-                        <li class="has-child"><a href="#">Account</a>
+                        <li class="has-child {{ (request()->is('account*')) ? 'active' : '' }}"><a href="#">Account</a>
                             <ul class="child-navigation">
                                 <li><a href="{{route('admin')}}">Your Account</a></li>
                                 <li><a href="{{route('admin.properties.myproperties')}}">My Properties</a></li>
+                                <li><a href="{{route('admin.properties.bookmarked')}}">My Bookmarks</a></li>
                             </ul>
                         </li>
                         @endif
