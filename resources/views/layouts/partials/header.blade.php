@@ -2,8 +2,8 @@
         <div class="secondary-navigation">
             <div class="container">
                 <div class="contact">
-                    <figure><strong>Phone:</strong>+44 123 123 123</figure>
-                    <figure><strong>Email:</strong>info@email.com</figure>
+                    <figure><strong>Phone:</strong>{!! getPhone() !!}</figure>
+                    <figure><strong>Email:</strong>{!! getEmail() !!}</figure>
                 </div>
                 <div class="user-area">
                     <div class="actions">
@@ -22,9 +22,7 @@
                         @endif
                     </div>
                     <div class="language-bar">
-                        <a href="#" class="active"><img src="assets/img/flags/gb.png" alt=""></a>
-                        <a href="#"><img src="assets/img/flags/de.png" alt=""></a>
-                        <a href="#"><img src="assets/img/flags/es.png" alt=""></a>
+                        <a href="#" class="active"><img src="{{URL::asset('assets/img/flags/gb.png')}}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -39,7 +37,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="navbar-brand nav" id="brand">
-                        <a href="{{route('index')}}"><img src="{{URL::asset('assets/img/logo.png')}}" alt="brand"></a>
+                        <a href="{{route('index')}}"><img src="{{URL::asset('assets/img/logo.png')}}" style="width:100px;" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -49,10 +47,11 @@
                         
                         
                         @if(Auth::user())
-                        <li class="has-child"><a href="#">Account</a>
+                        <li class="has-child {{ (request()->is('account*')) ? 'active' : '' }}"><a href="#">Account</a>
                             <ul class="child-navigation">
                                 <li><a href="{{route('admin')}}">Your Account</a></li>
                                 <li><a href="{{route('admin.properties.myproperties')}}">My Properties</a></li>
+                                <li><a href="{{route('admin.properties.bookmarked')}}">My Bookmarks</a></li>
                             </ul>
                         </li>
                         @endif

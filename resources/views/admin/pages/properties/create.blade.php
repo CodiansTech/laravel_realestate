@@ -197,6 +197,16 @@
                                     </div>
                                 </section>
 
+                                <section class="block" id="gallery">
+                                    <header><h2>Floor Plan Images</h2></header>
+                                    <div class="center">
+                                        <div class="form-group">
+                                            <input id="file-upload" type="file" name="floorplan[]" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Floor Plan Images" multiple>
+                                            <figure class="note"><strong>Hint:</strong> You can upload all images at once!</figure>
+                                        </div>
+                                    </div>
+                                </section>
+
                                 <section id="property-features" class="block">
                                     <section>
                                         <header><h2>Property Features</h2></header>

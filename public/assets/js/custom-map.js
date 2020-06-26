@@ -135,7 +135,7 @@ function success(position) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function initMap(propertyId) {
-    $.getScript("assets/js/locations.js", function(){
+    $.getScript("../assets/js/locations.js", function(){
         var subtractPosition = 0;
         var mapWrapper = $('#property-detail-map.float');
 

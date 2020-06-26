@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'address', 'mobilephone', 'homephone',
     ];
 
     /**
@@ -56,6 +56,10 @@ class User extends Authenticatable
         if($this->hasRole('agent'))
             return true;
         return false;
+    }
+
+    public function bookmarks(){
+        return $this->belongsToMany('App\Property', 'bookmarks');
     }
 
     public function getRole(){

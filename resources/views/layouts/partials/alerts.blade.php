@@ -1,4 +1,4 @@
-<div class="alert-box" style="margin-top: 10px;">
+<div class="alert-box">
     <div class="container">
         <div class="row">
             @if (Session::has('success'))

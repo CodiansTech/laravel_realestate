@@ -25,6 +25,26 @@ class PropertyController extends Controller
         return view('admin.pages.properties.myproperties')->withProperties($properties);
     }
 
+    public function halfMap(){
+        $maparray = array();
+        $auth = Auth::user();
+
+        
+        $properties = Property::where('user_id', $auth->id)->orderBy('id', 'desc')->paginate(10);
+        foreach($properties as $property){
+            array_push($maparray, [
+                'title' => 'Go NoWare',
+                'lat' => $property->lat, 
+                'lng' => $property->lng,
+                'url' => 'https://gonoware.com',
+                'popup' => '<a target="_blank" href="'.route('showProperty',$property->id).'"><h5>'.$property->address.'</h5><img src="'.$property->getFeaturedImageURL().'" >'. $properties->count().'</a>.</p>',
+                'icon_size' => [20, 32],
+                'icon_anchor' => [20, 32],
+            ]);
+        }
+        return view('pages.properties.half_map')->withProperties($properties)->with('maparray', $maparray);
+    }
+
     public function listProperties(){
         $properties = Property::orderBy('id', 'desc')->paginate(15);
         return view('pages.properties.grid_listing')->withProperties($properties);
@@ -45,7 +65,7 @@ class PropertyController extends Controller
             'address' => 'required|min:3|max:255',
             'city' => 'required|min:3|max:255',
             'zip' => 'required|min:3|max:255',
-            'filename' => 'required|mimes:jpg,jpeg,png',
+            // 'filename'=>'required|mimes:jpeg,png,jpg'
         ]);
 
     
@@ -86,9 +106,27 @@ class PropertyController extends Controller
                 $image = new Image();
                 $image->filename= $name;
                 $image->property_id = $property->id;
+                $image->type = 'gallery';
                 $image->save();
 
-                $img->move(public_path().'/images/property/', $name);  
+                $img->move(public_path().'/storage/app/property/', $name);  
+            }
+        }
+
+        if($request->hasfile('floorplan'))
+        {
+            foreach($request->file('floorplan') as $img)
+            {
+                $date = Date('d-m-Y');
+                $name = $date.'-'.$img->getClientOriginalName();
+
+                $image = new Image();
+                $image->filename= $name;
+                $image->property_id = $property->id;
+                $image->type = 'floorplan';
+                $image->save();
+
+                $img->move(public_path().'/storage/app/property/', $name);  
             }
         }
         return redirect()->route('admin.properties.index');
@@ -117,7 +155,6 @@ class PropertyController extends Controller
             }
         });
 
-        // dd($request->latitude. ' - '. $request->longitude);
         $property = Property::findOrFail($id);
         $property->title = $request->title;
         $property->description = $request->description;
@@ -153,7 +190,8 @@ class PropertyController extends Controller
 
     public function show($id){
         $property = Property::findOrFail($id);
-        return view('pages.properties.property_details')->withProperty($property);
+        $user = Auth::user();
+        return view('pages.properties.property_details')->withProperty($property)->withUser($user);
     }
 
     public function approveproperties(){
@@ -185,5 +223,26 @@ class PropertyController extends Controller
 
         return redirect()->route('admin.properties.editimages', $property->id);
     }
+
+    public function bookmarkProperty($id){
+        $property = Property::findOrFail($id);
+        $user = Auth::user();
+        
+        if(!$property->users->contains($user->id))
+            $property->users()->attach($user);
+        else
+            $property->users()->detach($user);
+        
+        
+        return redirect()->back();
+    }
+
+    public function bookmarkedProperties(){
+        $user = Auth::user();
+        $properties = $user->bookmarks()->paginate(10);
+        
+        return view('admin.pages.properties.bookmarked')->withUser($user)->withProperties($properties);
+    }
+
 
 }
