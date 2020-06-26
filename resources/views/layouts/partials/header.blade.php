@@ -60,8 +60,9 @@
                     </ul>
                 </nav><!-- /.navbar collapse-->
                 @if(Auth::user())
-                <div class="add-your-property">
-                    <a href="{{route('admin.properties.create')}}" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
+                    <div class="add-your-property">
+                    <a href="submit.html" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
+
                 </div>
                 @endif
             </header><!-- /.navbar -->
