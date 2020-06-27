@@ -16,7 +16,12 @@
         .gnw-map.fade:not(.show) {
             opacity: 0;
         }
-    </style>
+    </style> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
 @endsection
 
 @section('content')
@@ -35,6 +40,11 @@
             <div class="row">
                 <!-- Results -->
                 <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <input id="search" name="search" type="text" class="form-control" placeholder="Search" autocomplete="off" />
+                        <div id="results">
+                        </div>
+                    </div>
                     <section id="results">
                         <section id="search-filter">
                             <figure><h3><i class="fa fa-search"></i>Search Results:</h3>
@@ -137,8 +147,44 @@
     <!-- end Page Content -->
 @endsection
 
-@section('script')
+@section('script')  
+
+<script>
+$(document).ready(function(){
+
+    $('#search').keyup(function(){ 
+        var query = $(this).val();
+        if(query != '')
+        {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url:"{{ route('search') }}",
+                method:"GET",
+                data:{query:query, _token:_token},
+                success:function(data){
+                    $('#results').fadeIn();  
+                    $('#results').html(data);
+                }
+            });
+        }
+        else{
+            $('#results').fadeOut();  
+        }
+    });
+
+    $(document).on('click', 'li', function(){  
+        $('#country_name').val($(this).text());  
+        $('#results').fadeOut();  
+    });  
+
+});
+</script>
+
+
+
 @mapscripts
+
+   
 <script>
 	window.addEventListener('LaravelMaps:MapInitialized', function (event) {
 		var element = event.detail.element;

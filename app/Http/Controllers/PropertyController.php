@@ -7,6 +7,7 @@ use App\Property;
 use App\PropertyType;
 use App\Image;
 use Auth;
+use DB;
 use Session;
 
 class PropertyController extends Controller
@@ -25,7 +26,10 @@ class PropertyController extends Controller
         return view('admin.pages.properties.myproperties')->withProperties($properties);
     }
 
-    public function halfMap(){
+    public function halfMap(Request $request){
+
+       
+
         $maparray = array();
         $auth = Auth::user();
 
@@ -136,6 +140,24 @@ class PropertyController extends Controller
         $property = Property::findOrFail($id);
         return view('admin.pages.properties.edit')->withProperty($property);
     }
+
+    public function searchMap(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $data = Property::where('address', 'LIKE', "%{$query}%")
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach($data as $row)
+            {
+                $output .= '
+                <li><a href="'.route('showProperty', $row->id).'">'.$row->address.'</a></li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    } 
 
     public function update(Request $request, $id){
         $request->validate([
